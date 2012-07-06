@@ -1,0 +1,10 @@
+-provide(:title, 'Editing Account')
+
+#account_form.span4
+
+  %h1 Editing Account
+
+  =form_for @user, url: account_path do |f|
+    = render partial: 'form', :object => f
+    .button_container
+      = f.submit "Confirm Changes", :class => 'btn btn-large btn-primary'

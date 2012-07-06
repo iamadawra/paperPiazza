@@ -1,0 +1,7 @@
+#rubric_form.span10
+  %h1 Add Rubric Item
+
+  = form_for [@question, @rubric_item], :url => { :action => "create", :question_id => @question.id}  do |f|
+    = render :partial => "form", :object => f, :locals=>{:question_id  => @question.id}
+    .button_container
+    = submit_tag "Add Rubric Item"

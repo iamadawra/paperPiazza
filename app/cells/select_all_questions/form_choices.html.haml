@@ -1,0 +1,5 @@
+%ol
+  - @question.choices.each_with_index do |choice, i|
+    = check_box_array_tag @answer_name + "[]", i, (@answer && (@answer.include? i))
+    = label_tag @answer_name + "[#{i}]", safe_raw(choice)
+    %br

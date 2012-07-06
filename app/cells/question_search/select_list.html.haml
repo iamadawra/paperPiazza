@@ -1,0 +1,6 @@
+- @questions.each do |question|
+  .question_item{:id => "question_#{question.id}", "data-url" => course_question_path(@course, question)}
+    - if question.title and not question.title.empty?
+      %p.question_item_title
+        = question.title
+    =safe_raw question.text

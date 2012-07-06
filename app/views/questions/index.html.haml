@@ -1,0 +1,21 @@
+%h1 Questions
+
+.row-fluid
+-if @course.has_instructor?(@current_user)
+  .button_container.instructor-box
+    = link_to "Create Question", new_course_question_path(@course), :class=>[:btn,'btn-large', 'btn-primary']
+
+.row-fluid#question_index
+  .span4
+
+    #question_search{"data-question-source" => course_questions_path(@course)}
+      #question_search_fields
+        %label(for="question_id")
+          Available Questions
+        .search_field
+          = text_field_tag :search_key, "", :placeholder =>"Search for a question", "data-search-url" => course_question_search_path(@course, ""), :class => "search-query"
+          %i.icon-search
+      #search_results
+        = render_cell :question_search, :select_list, questions: @questions, course: @course
+  .span8
+    #question_preview

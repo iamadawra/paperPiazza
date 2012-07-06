@@ -1,0 +1,13 @@
+= render 'shared/error_messages', target: @course
+
+= form.label       :name
+= form.text_field  :name
+
+= form.label       :shortname, "Original Author"
+= form.text_field  :shortname
+
+= form.label       :description, "Link to Source"
+= form.text_field  :description
+
+= form.label  :rating
+= form.select :rating, 1..10, :include_blank => true

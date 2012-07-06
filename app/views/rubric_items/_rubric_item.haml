@@ -1,0 +1,11 @@
+%tr
+  %td
+    = rubric_item.weight
+  %td
+    = rubric_item.title
+  %td
+    = rubric_item.description
+  %td
+    = link_to "Edit", edit_course_question_rubric_item_path(@course, @question, rubric_item), :class => ['button']
+  %td
+    = link_to "Delete", {:action=>'destroy', :id=>rubric_item}, :confirm=>"Are you sure", :method=>:delete, :class => ['button', 'dangerous'], :id=>"delete_rubric_item_#{rubric_item.id}"

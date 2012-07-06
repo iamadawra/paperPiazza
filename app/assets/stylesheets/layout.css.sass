@@ -1,0 +1,134 @@
+@import compass/reset
+@import compass/css3
+
+@import partials/mixins
+@import partials/base
+
+@import bootstrap
+@import bootstrap-responsive
+@import font-awesome
+
++sticky-footer($border_height: $footerBorderHeight)
+
+header
+  .brand
+    //TODO use one of the font helper things..
+    font-family: "Trebuchet MS", Arial, tahoma, sans-serif
+    color: $brandColor
+  
+    &#beta
+      color: $betaColor
+      padding-left: 5px
+      padding-right: 10px
+
+  ul#course_menu
+    margin-right: 0
+
+    li#course_dropdown
+      &.open
+        a.dropdown-toggle
+          // Uncomment this line if you don't want an open dropdown to have a darker color
+          // background-color: inherit 
+          color: $navbarLinkColorHover
+          b.caret
+            border-top-color: $navbarLinkColorHover
+
+      a
+        b.caret
+          border-top-color: $navbarLinkColor
+          +opacity(1)
+
+        &:hover > b.caret
+          border-top-color: $navbarLinkColorHover !important
+          +opacity(1)
+    
+    
+  
+  #account_controls
+    margin-left: 0
+
+#wrapper
+
+  #content_container
+    padding: 60px 20px 20px
+
+    @media (min-width: 768px)
+      .fixed_sidebar
+        position: fixed
+        left: 20px
+        top: 60px
+        //width: 200px
+
+      .with_fixed_sidebar
+        margin-left: (2.564102564% + 23.077%)
+        //margin-left: 260px
+
+    .debug_dump
+      margin-top: 25px
+
+  &.with_bottom_navbar
+    #content_container
+      padding-bottom: 60px
+
+        
+footer
+  padding-left: 20px
+  padding-right: 20px
+  //background-color: $footerColor
+  font-family: "Trebuchet MS", Arial, tahoma, sans-serif
+  line-height: $footerHeight - $footerBorderHeight
+  font-size: 14px
+  color: $footerTextColor
+
+  hr
+    border: 0
+    margin: 0
+    width: 100%
+    color: $footerColor
+    background-color: $footerColor
+    height: $footerBorderHeight
+
+  a
+    color: $footerTextColor
+    &:hover
+      color: $footerTextColor
+
+  #footer_suggestions
+    float: left
+  #footer_copyright
+    float: right
+
+h1
+  text-align: center
+  margin-bottom: 20px
+
+.button_container
+  text-align: center
+
+#errors
+  +inline-block
+  margin: auto
+  text-align: left
+
+.field_with_errors
+  @extend .control-group
+  @extend .error
+  display: inline
+
+input[type=text], input[type=password], textarea, select
+  height: auto
+  border: 1px solid #bbb
+  padding: 5px
+  +box-sizing(border-box)
+
+span.anchor
+  display: block
+  height: 40px
+  margin-top: -40px
+  visibility: hidden
+
+.instructor-box
+  @extend .alert
+  @extend .alert-info
+  @extend .span6
+  margin: 0em 25% 1.5em

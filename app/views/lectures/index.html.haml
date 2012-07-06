@@ -1,0 +1,29 @@
+-provide(:title, @course.name + " | Lectures")
+
+%h1 Lectures
+
+-if @course.has_instructor?(@current_user)
+  .row-fluid
+    .button_container.instructor-box
+      = link_to "Create Lecture", new_course_lecture_path(@course), :class=>[:btn,'btn-large', 'btn-primary']
+
+.row-fluid
+  #lecture-table.span10
+    %table.table.table-striped
+      %tr
+        %th
+          Title
+        %th
+          Video Duration
+        -if @course.has_instructor?(current_user)
+          %th
+            Release Date
+          %th
+            Published
+          %th
+            \# of Questions
+          %th
+            Edit
+          %th
+            Delete
+        = render @lectures

@@ -1,0 +1,13 @@
+.question{:class => @feedback_class, :id => "question_#{@question.id}"}
+  = form_tag(@form_url, :method => :post)  do
+    = hidden_field_tag :anchor,"##{@prefix}_#{@index}"
+    = render :state => :header_anchor
+    .text
+      = safe_raw @question.text
+    %br
+    .choices
+      = render :state => :form_choices
+    .button_container
+      = submit_tag @button_text, :class => 'btn'
+  -#= render :state => :submissions
+  -#= render :state => :discussion

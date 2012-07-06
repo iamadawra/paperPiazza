@@ -1,0 +1,82 @@
+@import base
+@import compass/utilities
+@import blueprint/interaction
+
+=sticky-footer($wrapper: '#wrapper', $footer: 'footer', $height: 30px, $push: '.push', $border_height: 0, $bottom_navbar_class: '.with_bottom_navbar', $bottom_navbar_height: 40px)
+  
+  *
+    margin: 0
+
+  html, body
+    height: 100%
+
+  body
+
+    #{$wrapper}
+      
+      min-height: 100%
+      height: auto !important
+      height: 100%
+      margin: 0 auto (-$height)
+
+      &#{$bottom_navbar_class}
+        margin: 0 auto (-$height - $bottom_navbar_height)
+
+    @if $border_height == 0
+      #{$footer}, #{$push}
+        height: $height
+        &#{$bottom_navbar_class}
+          padding-bottom: $bottom_navbar_height
+    @else
+      #{$push}
+        height: $height
+      #{$footer}
+        height: $height - $border_height
+        &#{$bottom_navbar_class}
+          padding-bottom: $bottom_navbar_height
+
+=fieldset_header
+  +inline-block
+  padding: 0px 10px
+  z-index: 2
+  background-color: white
+  margin: 0px auto
+
+=empty_feedback
+  +info
+  border-color: white
+  background-color: white
+  color: inherit
+
+=selected($feedback-base-class: false)
+  @if $feedback-base-class
+    @extend .#{$feedback-base-class}
+  @else
+    +feedback-base
+  background: $selected-bg-color
+  color: $selected-color
+  border-color: $selected-border-color
+  a
+    color: $selected-color
+
+=custom_choose_all_display
+
+  table.checkbox_array
+    th, td
+      padding: 0px
+      height: 35px 
+      width: 35px
+  
+  .extra_choices
+    ul
+      li
+        .extra_choice
+          +empty_feedback
+          +border-radius(15px)
+          padding: 5px
+          margin: 0
+          &.chosen
+            +selected
+            +border-radius(15px)
+            padding: 5px
+            margin: 0

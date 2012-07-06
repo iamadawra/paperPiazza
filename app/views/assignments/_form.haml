@@ -1,0 +1,79 @@
+%fieldset
+  = render 'shared/error_messages', target: form.object
+
+  .control-group.inline
+    = form.label      :title, "Title", :class => "control-label"
+    .controls
+      = form.text_field :title, :class => "input-xlarge", :placeholder => "Name your assignment"
+
+  .control-group.inline
+    = form.label :release_date_date, "Release Date", :class => "control-label"
+    .controls
+      = form.text_field :release_date_date, 
+                        :class => ["input-small", "date_select", "date"], 
+                        :placeholder => Time.now.to_s(:form_date)
+      %span.help-inline
+        at
+      = form.text_field :release_date_time, 
+                        :placeholder => "(e.g. 5:00pm)", 
+                        :class => ["time", "input-small"]
+
+  .control-group.inline
+    = form.label :due_date_date, "Due Date", :class => "control-label"
+    .controls
+      = form.text_field :due_date_date, 
+                        :class => ["input-small", "date_select", "date"], 
+                        :placeholder => Time.now.to_s(:form_date)
+      %span.help-inline
+        at
+      = form.text_field :due_date_time, 
+                        :placeholder => "(e.g. 5:00pm)", 
+                        :class => ["time", "input-small"]
+
+  .control-group.inline
+    = form.label  :resubmit_delay, "Resubmit Delay (seconds)", :class => "control-label"
+    .controls
+      = form.text_field :resubmit_delay, :class => "input-mini"
+
+  .control-group.inline
+    = form.label :feedback, "Instant Feedback", :class => 'control-label'
+    .controls
+      = form.check_box :feedback
+
+= form.hidden_field :total_points
+
+%hr
+
+.row-fluid
+  .span3
+    .question_list{:question_ids => @question_ids, :search_url => course_question_search_path(@course, "")}
+      %h4 Selected Questions
+      -# Display added questions here, using a jQuery sortable
+      %ol#selected_questions
+        - @assignment.entries.each_with_index do |entry, i|
+          = render entry, :index => i
+  .span3
+    #question_selector
+      #question_search_wrapper
+        %label(for="question_id")
+          Available Questions
+        .search_field
+          %input.search-query{:id => "search_key", :placeholder => "Search for a question"}
+          %i.icon-search
+      #question_id
+        = render_cell :question_search, :select_list, questions: @available_questions, course: @course
+      .button_container
+        = link_to 'Create New Question', "#", :class=>['btn'], :id=>:create_new_question, 'data-course-id'=>@course.id
+  .span6
+    #question_preview_wrapper
+      #question_preview
+      .button_container
+        = link_to 'Add Question', "#", :class=>['btn'], :id=>:add_question
+  .row-fluid
+    #embedded_editor.span12
+      .question_editor
+      .button_container
+        = link_to 'Save Question', "#", :class=>['btn'], :id=>:save_new_question, 'style'=>'display:none' #HACK so that it plays well with jQuery
+
+= form.hidden_field :question_ids
+

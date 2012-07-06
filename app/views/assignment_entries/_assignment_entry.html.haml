@@ -1,0 +1,9 @@
+%li{:id => "question_ids_#{assignment_entry.question_id}", :url => course_question_path(@course, assignment_entry.question), :class => "question_list_item"}
+  = safe_raw assignment_entry.question.text
+  %span.resubmit_delay_text
+  %a{:href => "javascript:void(0)", :class => "btn delete_assignment_entry"}
+    Delete
+
+  %input{:type =>'hidden', :name => "assignment[entries_attributes][#{index}][question_id]", :id => "assignment_entries_#{index}_question_id", :value => assignment_entry.question_id}
+    - if assignment_entry.resubmit_delay
+      %input{:type => 'hidden', :name => "assignment[entries_attributes][#{index}][resubmit_delay]", :id => "assignment_entries_#{index}_resubmit_delay", :value => assignment_entry.resubmit_delay}

@@ -1,0 +1,12 @@
+.question_html{:id => "question_text_#{in_lecture_question.question_id}", :style => "display: none"}
+  = render_cell :questions, :form, question: in_lecture_question.question, 
+                                   user: current_user, 
+                                   show_points: false,
+                                   embedded: true
+-#  %h1= in_video_assignment.assignment.title
+-#  = form_tag submit_in_video_course_assignment_path(course, in_video_assignment.assignment) do
+-#    - in_video_assignment.assignment.assignment_entries.each do |entry|
+-#      =render :partial => "assignment_submissions/#{entry.question.class.to_s.underscore}", :object => entry.question, :locals => {:answer_name => answer_name(entry), :assignment_entry => entry, :number => entry.entry_number + 1, :index_in_group => nil, :nesting => 0, :filled_answer => nil, :graded_answer => nil, :points => entry.points}
+-#    .button_container
+-#      = submit_tag "Submit", :class => "submit_quiz", :id => "submit_quiz_#{in_video_assignment.assignment_id}"
+-#      = link_to "Skip", "#Skip", :class => ["button", "skip_quiz"], :id => "skip_quiz_#{in_video_assignment.assignment_id}"

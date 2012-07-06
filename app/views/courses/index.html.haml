@@ -1,0 +1,25 @@
+-provide(:title, "Paper Index")
+
+
+-if current_user
+  .button_container
+    = link_to "Add a Research Paper", new_course_path, :class => ["btn btn-large btn-primary"]
+
+%br
+
+#courses
+  %h1 Browsing Research Papers
+
+  %table#course_list.table.table-striped
+    %tr
+      %th
+        Title
+      %th
+        Author
+      %th
+        Added By
+      %th
+        Status
+      %th
+        Reader Rating (Scale of 10)
+    = render @courses

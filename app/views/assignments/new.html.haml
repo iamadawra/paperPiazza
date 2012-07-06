@@ -1,0 +1,9 @@
+#assignment_form
+  %h1 Create an Assignment
+  %br
+  = form_for [@course, @assignment], :html=>{:class=>"form-inline"} do |f|
+    = render :partial => "form", :object => f
+    .button_container
+      = submit_tag "Create assignment", :id => "submit", :class => [:btn, "btn-large", "btn-primary"]
+    %hr
+    %h1 Preview

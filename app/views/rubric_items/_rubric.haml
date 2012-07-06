@@ -1,0 +1,15 @@
+-# This partial is used to include a full rubric for a question into some other view, for example in the evaluation
+
+#rubric
+  %table
+    %tr
+      %th Weight
+      %th Title
+      %th Description
+      %th Edit
+      %th Delete
+    = render :partial=>"/rubric_criterion/rubric_criterion_entry", :as=>:rubric_criterion,
+      :collection=>rubric, :locals=>{:question=>question}
+  .button_container
+    = link_to "Add Rubric Item", new_course_question_rubric_item_path(course, question), :class => [:button, :good]
+

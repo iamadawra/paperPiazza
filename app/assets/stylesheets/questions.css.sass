@@ -1,0 +1,269 @@
+@import compass/css3
+
+@import partials/base
+@import partials/mixins
+
+#question_index
+  #question_search_fields
+    padding: 5px
+    label
+      font-weight: bold
+      display: inline
+      margin-right: 10px
+    .search_field
+      position: relative
+      display: inline
+      input
+        padding-left: 24px
+
+      .icon-search
+        color: gray
+        position: absolute
+        top: 0px
+        left: 11px
+  
+  #question_search
+    
+    #search_results
+      border: 2px solid black
+      min-height: 400px
+      height: 400px
+      overflow-y: auto
+      overflow-x: hidden
+      +box-sizing(border-box)
+
+.question_group, .question
+
+  input
+    display: inline
+
+  label
+    display: inline
+    padding-left: 5px
+
+
+.question_group, .question
+  
+  &.correct
+    .question_header
+      color: green
+      font-weight: bold
+
+      &:after
+        content: " (correct)"
+
+  &.incorrect
+    .question_header
+      color: red
+
+      &:after
+        content: " (incorrect)"
+
+  &.answered
+    .question_header
+      &:after
+        content: " (answered)"
+
+  &.unanswered
+    .question_header
+      &:after
+        content: " (unanswered)"
+    
+  
+  h2
+    font-size: 20px
+
+  h1, h2, h3, h4
+    text-align: center
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif
+    text-rendering: auto
+
+  //text-align: center
+
+  .text, .choices, .explanations
+    width: 90%
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif
+    text-rendering: auto
+    font-size: 16px
+    margin: 5px auto
+    //text-align: left
+    //+inline-block
+
+    p, label
+      font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif
+      text-rendering: auto
+      font-size: 16px
+
+.question
+  //text-align: center
+
+  //border: 1px solid gray
+  //background-color: #fcfcfc
+  //padding: 10px
+  //+border-radius(10px)
+
+  margin-bottom: 10px
+  
+.question_group > .question
+  h2
+    font-size: 18px
+
+.question 
+
+  .text, .explanation
+    text-align: left
+
+  ol, ul
+    
+    margin: 0px 15px
+
+    li
+      line-height: 20px
+
+      .item_wrapper
+        +inline-block
+        margin: 2px auto 5px auto
+        padding: 7px 7px 7px 5px
+
+      &.chosen
+        .item_wrapper
+          +selected
+          +border-radius(15px)
+          margin: 2px auto 5px auto
+          padding: 5px 5px 5px 3px
+
+  ul
+    li
+      list-style: disc
+
+  ol
+    li
+      list-style-type: lower-latin
+  .explanation
+    +success
+    +border-radius(5px)
+
+#question_show
+  margin: 0 16.5%
+
+#question_editor
+  margin: 0 8.3%
+
+#editor
+  :width 90%
+  :margin auto
+  :overflow hidden
+  +border-radius(10px)
+  +box-sizing(border-box)
+
+  .element_wrapper
+    textarea
+      width: 400px
+
+  min-height: 200px
+  padding-bottom: 20px
+  position: relative
+  
+  .element
+    margin: 30px 0 0 0
+    text-align: center
+
+    .element_edit
+      +box-sizing(border-box)
+      text-align: left
+
+      &.active
+
+        padding: 25px 45px 20px 45px
+        border: 2px solid $blue
+        +border-radius(10px)
+
+        // Header info: (e.g. Question 3)
+        .section
+          margin-top: -44px
+          margin-bottom: 10px
+          text-align: center
+          h2
+            +fieldset_header
+
+        .title_title, .title, .title_select_type, .select_type, .title_score, .score
+          display: inline
+          margin-right: 10px
+
+        .title_title, .title_select_type, .title_score, .title_description, .choices_label
+          font-weight: bold
+
+        .button_container
+          margin: 10px 0
+
+        .select_type
+          width: auto
+
+        .input_choice_text
+          margin-left: 10px
+
+        .btn_add_choice
+          margin-bottom: 10px
+
+        select
+          margin: 0px 20px 0px 0px
+
+        label.points
+          padding: 0px 5px 0px 0px
+
+        input.points
+          width: 35px
+          text-align: right
+
+        .question_group_points
+          text-align: center
+
+        .text_wrapper, .explanation_wrapper, .custom_html_wrapper
+          margin: 10px 0px 5px 0px
+          *
+            vertical-align: middle
+          label
+            +inline-block
+            width: 130px
+
+        .choices_wrapper
+          
+          *
+            vertical-align: middle
+
+          .input_choices
+            +inline-block
+
+          .choices_label
+            +inline-block
+            width: 107px
+
+          .choice_wrapper
+            margin: 5px 0px 5px 0px
+            *
+              vertical-align: middle
+            a.delete_choice
+              font-size: 10%
+
+    .preview
+      +box-sizing(border-box)
+      margin-bottom: 20px
+      width: 95%
+      +inline-block
+      +custom_choose_all_display
+      +border-radius(5px)
+      padding: 10px 20px
+      :border 2px solid black
+      .preview_label
+        margin-top: -28px
+        margin-bottom: 10px
+        text-align: center
+        h2
+          +fieldset_header
+
+#MathJax_Message
+  :display none !important
+.MathJax_Display
+  :overflow hidden
+.MathJax_Preview
+  :display none

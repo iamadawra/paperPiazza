@@ -1,0 +1,7 @@
+#rubric_form.span10
+  %h1 Edit Rubric Item
+
+  = form_for [@question, @rubric_item], :url => { :action => "update"}  do |f|
+    = render :partial => "form", :object => f, :locals=>{:question_id  => @question.id}
+    .button_container
+    = submit_tag "Update Rubric Item"

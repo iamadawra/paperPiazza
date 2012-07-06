@@ -1,0 +1,15 @@
+.question_group
+  = render :state => :header_anchor
+  .text
+    = safe_raw @question.text
+  - @question.questions.each do |q|
+    = render_cell :questions, :form,  question: q,
+                                      assignment: @assignment,
+                                      user: @user,
+                                      feedback: @feedback,
+                                      section_prefix: @section_prefix,
+                                      index: render({state: :child_index_string},
+                                            q.child_index),
+                                      prefix: "Part",
+                                      show_submissions: @show_submissions,
+                                      show_points: @show_points

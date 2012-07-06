@@ -1,0 +1,13 @@
+.question
+  = render :state => :header_anchor
+  .text
+    = safe_raw @question.text
+  %br
+  -if @question.explanations
+    -#.explanation
+    -#  = safe_raw @question.explanations
+  -if @question.choices
+    .choices
+      = render :state => :show_choices
+  .submissions
+    = render :state => :submissions

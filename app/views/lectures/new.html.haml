@@ -1,0 +1,8 @@
+-provide(:title, 'Create a Lecture')
+
+#lecture_form.span12
+
+  %h1 Create a Lecture
+
+  =form_for [@course, @lecture], :html => {:class => ["form-inline"]} do |f|
+    = render partial: 'form', :object => f

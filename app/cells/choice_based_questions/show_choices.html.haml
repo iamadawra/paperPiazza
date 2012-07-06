@@ -1,0 +1,5 @@
+%ol
+  - @question.choices.each_with_index do |choice, i|
+    %li{:class => chosen_class(@answer, i)}
+      .item_wrapper
+        =safe_raw choice

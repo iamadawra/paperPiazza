@@ -1,0 +1,2 @@
+#answer_correctness{:"data-correct" => @question.is_correct?(@answer).to_json, :style => "display:none"}
+= render_cell :questions, :show, question: @question, user: current_user, answer: @answer, feedback: true, embedded: true

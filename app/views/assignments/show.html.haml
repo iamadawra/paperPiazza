@@ -1,0 +1,30 @@
+#assignment_sidebar.fixed_sidebar.span3
+  .well
+    %h3= @assignment.title
+    %h4
+      %u
+        Due Date
+      %br
+      =h @assignment.due_date.to_s(:due) # TODO localize
+    %br
+    %ul
+      - @assignment.entries.each_with_index do |entry, i|
+        = render_cell(:questions, :navigation_link,
+                                  question: entry.question,
+                                  assignment: @assignment,
+                                  index: i+1,
+                                  user: current_user,
+                                  feedback: @assignment.feedback,
+                                  anchor: "#Question_#{i+1}")
+
+#assignment_display.with_fixed_sidebar.span9
+  #questions
+    - @assignment.entries.each_with_index do |entry, i|
+      = render_cell :questions, :form,  question: entry.question,
+                                        assignment: @assignment,
+                                        user: current_user,
+                                        index: i+1,
+                                        prefix: "Question",
+                                        show_submissions: true,
+                                        feedback: @assignment.feedback, 
+                                        show_points: true

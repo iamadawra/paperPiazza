@@ -1,0 +1,5 @@
+%ol
+  - @question.choices.each_with_index do |choice, i|
+    = radio_button_tag @answer_name, i, (@answer && @answer.to_i == i)
+    = label_tag @answer_name + "[#{i}]", safe_raw(choice)
+    %br

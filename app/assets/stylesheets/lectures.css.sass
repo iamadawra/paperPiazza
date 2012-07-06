@@ -1,0 +1,202 @@
+// *= require kalendae.css
+
+@import compass/css3
+@import partials/base
+
+#lecture_form
+
+  fieldset
+
+    label
+      font-size: 16px
+      font-weight: bold
+    margin: auto
+    text-align: center
+
+    .control-group.inline
+      +inline-block
+      margin: 0px 10px
+      text-align: center
+
+      .controls
+        .time
+          margin-left: 5px
+        .url
+          width: 400px 
+
+    input[type=submit]
+      margin-top: 10px
+  
+  #player_container
+    margin: auto
+
+  .placeholder
+    min-height: 360px
+    width: 100%
+    border: 2px dashed gray
+    +border-radius(10px)
+    position: relative
+
+    .placeholder_text
+      width: 100%
+      text-align: center
+      height: 20px 
+      position: absolute
+      top: 50%
+      margin-top: -25px
+      padding: 20px
+      +box-sizing(border-box)
+
+      p
+        line-height: 20px
+        font-size: 20px
+        color: gray
+
+        &.invalid
+          color: #B94A48
+          
+    &#question_placeholder
+      .placeholder_text
+        margin-top: -35px
+
+      #question_search
+        padding: 10px
+
+      #question_time
+        width: 75%
+        margin: 0 auto
+        margin-bottom: 5px
+
+      .button_margin
+        margin-top: 90px
+
+      .button_container
+        position: absolute
+        width: 100%
+        bottom: 10px
+        text-align: center
+
+        .btn
+          width: auto
+          margin: 0 auto
+
+  #question_search_fields
+    text-align: center
+
+    label
+      font-size: 14px
+      font-weight: bold
+
+    .search_field
+      position: relative
+      display: inline
+      input
+        padding-left: 24px
+
+      .icon-search
+        color: gray
+        position: absolute
+        top: 0px
+        left: 11px
+  
+  #search_results
+    margin: 10px 15px
+    overflow-y: auto
+    border-width: 1px
+    border-color: gray
+    border-style: solid
+
+  #added_questions
+    width: 100%
+    margin: 0
+    padding: 20px
+    +box-sizing(border-box)
+
+    hr
+      margin: 0
+      border-color: whiteSmoke
+      border-width: 1px
+      border-style: solid
+
+    li
+      display: block
+      text-align: center
+      padding: 20px
+      font-size: 20px
+      font-weight: bold 
+
+      &:hover, li > a:hover
+        background-color: #e8e8e8
+
+      a
+        text-decoration: none
+        padding: 0px 60px
+        font-weight: normal
+
+#player_container
+  //margin: 0 21.3675%
+
+  &.big
+    margin: 0 12.5%
+
+  #player
+    display: block
+    margin: 0px auto
+    min-height: 400px
+
+  #question_timeline
+
+    $arrow-size: 8px
+
+    // This 9px is influenced by YouTube's playhead size. TODO figure out
+    // what "influenced" means
+    margin: 0 9px
+    height: $arrow-size
+    position: relative
+
+    .question_marker
+      position: absolute
+      top: 0
+      margin-left: -$arrow-size
+      border-left: $arrow-size solid transparent
+      border-right: $arrow-size solid transparent
+      border-bottom: $arrow-size solid #0000ff
+      cursor: pointer
+
+      &:hover
+        border-bottom-color: #000079
+
+      &:active
+        border-bottom-color: #000000
+
+      &.active
+        border-bottom: $arrow-size solid #00aaff
+
+      &.skipped
+        border-bottom: $arrow-size solid #aaaa00
+
+      &.correct
+        border-bottom: $arrow-size solid #00ff00
+
+      &.incorrect
+        border-bottom: $arrow-size solid #ff0000
+  
+#lecture
+  #question_container
+    form
+      margin-bottom: 0
+    padding: 15px
+    +box-sizing(border-box)
+
+    &.active
+      border: 2px solid $blue
+      +border-radius(15px)
+    .button_container
+      .btn
+        margin-left: 10px
+
+#lecture-table
+  margin: 0 8.3%
+
+  table
+    margin: 0 auto

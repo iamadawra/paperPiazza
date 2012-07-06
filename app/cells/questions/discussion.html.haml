@@ -1,0 +1,8 @@
+.row-fluid
+  .discussion.span8
+    = link_to "View the discussion for this question", "javascript:void(0)", :class => "discussion_link"
+    %ul{:id => "discussion_list_#{@question.id}"}
+      -@question.submissions.by_user(@user).each do |submission|
+        %li
+          = submission.created_at
+          = submission.score

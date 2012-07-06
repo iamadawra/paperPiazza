@@ -1,0 +1,16 @@
+#rubric
+  %h1
+    Rubric for
+    = @question.title
+
+  %table.table.table-striped
+    %tr
+      %th Weight
+      %th Title
+      %th Description
+      %th Edit
+      %th Delete
+    = render :partial=>"rubric_item", :collection=>@rubric
+
+  .button_container
+    = link_to "Add Rubric Item", new_course_question_rubric_item_path(@course, :question_id=>@question.id), :class => [:button, :good]

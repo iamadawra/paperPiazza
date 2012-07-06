@@ -1,0 +1,18 @@
+%tr.assignment_item_row
+  %td
+    = link_to h(assignment.title), course_assignment_url(@course, assignment)
+  %td
+    = assignment.release_date.to_s(:due_short) rescue 'nil'
+  %td
+    = assignment.due_date.to_s(:due_short)
+  %td
+    = assignment.resubmit_delay
+  %td
+    = assignment.score(current_user)
+  %td
+    = assignment.total_points
+  -if @course.has_instructor?(current_user)
+    %td
+      = link_to bootstrap_icon('remove'), {:controller=>:assignments, :action=>:destroy, :id=>assignment},
+        :method=>:delete, :class => ['btn', 'btn-danger', 'delete-post'], :confirm=>'Are you sure you want to delete this assignment?'
+

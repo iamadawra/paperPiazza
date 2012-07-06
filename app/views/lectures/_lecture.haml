@@ -1,0 +1,18 @@
+%tr.lecture_row
+  %td
+    = link_to h(lecture.title), course_lecture_url(@course, lecture)
+  %td
+    = Time.at(lecture.video_duration.seconds).strftime("%-M:%S")
+  - if @course.has_instructor?(current_user)
+    %td
+      = lecture.release_date.to_s(:due_short) rescue 'nil'
+    %td
+      -if lecture.published?
+        = bootstrap_icon('ok')
+    %td
+      = lecture.questions.length
+    %td
+      = link_to bootstrap_icon('pencil'), edit_course_lecture_url(@course, lecture), :class=>[:btn]
+    %td
+      = link_to bootstrap_icon('remove'), {:controller=>:lectures, :action=>:destroy, :id=>lecture},
+        :method=>:delete, :class => ['btn', 'btn-danger', 'delete-post'], :confirm=>'Are you sure you want to delete this lecture?'

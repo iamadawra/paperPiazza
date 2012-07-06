@@ -1,0 +1,10 @@
+-provide(:title, "Editing Paper Information")
+
+#course_form.span4
+
+  %h1 Editing Paper Information
+
+  =form_for @course do |f|
+    = render partial: 'form', :object => f
+    .button_container
+      = f.submit "Update", :class => 'btn btn-large btn-primary'

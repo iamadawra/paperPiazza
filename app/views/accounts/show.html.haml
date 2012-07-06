@@ -1,0 +1,37 @@
+-provide(:title, 'My Profile')
+
+#account
+  %h1 My Profile
+  %h2
+    = @user.name
+    = "(#{@user.email})"
+  %h3 Recently Added Papers
+  %p
+  %table#course_list.table.table-striped
+    %tr
+      %th
+        Title
+      %th
+        Author
+      %th
+        Status
+      %th
+        Reader Rating (Scale of 10)
+        -for course in @user.courses
+          - if course.has_instructor?(@user)
+            %tr
+              %td
+                =link_to course.name, course
+              %td
+                =course.shortname
+              %td
+                -if current_user
+                  -unless course.has_member?(current_user)
+                    = form_tag course_memberships_path(course), :method => :post do
+                      = submit_tag "Read Paper", :class => ['btn'], :id => "join_course#{course.id}"
+                -else
+                  -if course.has_student?(current_user)
+                    = link_to "Mark as Unread", course_membership_path(course, course.memberships.for_user(current_user)), :method => :delete, :class => ['btn'], :id => "leave_course#{course.id}"
+              %td
+                =course.rating
+        

@@ -1,0 +1,12 @@
+%ul#course_list.dropdown-menu
+  %li
+    = link_to "Browse More Papers", courses_path
+
+
+
+/*  -for course in current_user.courses
+/*    -if @course and @course.id == course.id
+/      -next
+/    %li
+/      - if course.has_instructor?(current_user)
+/        = link_to course.to_s, course_path(course)

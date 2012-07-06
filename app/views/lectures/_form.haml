@@ -1,0 +1,83 @@
+%fieldset
+  = render 'shared/error_messages', target: form.object
+
+  .control-group.inline
+    = form.label      :title, "Title", :class => "control-label"
+    .controls
+      = form.text_field :title, :class => "input-xlarge", :placeholder => "Enter a title"
+
+  .control-group.inline
+    = form.label      :video_url, "Video Link"
+    .controls
+      = form.text_field :video_url, :class => "url", :placeholder => "Enter a link to your YouTube video"
+
+  -#= form.label      :slides_url, "Slides Link"
+  -#= form.text_field :slides_url
+
+  .control-group.inline
+    = form.label :release_date_date, "Release Date", :class => "control-label"
+    .controls
+      = form.text_field :release_date_date, 
+                        :class => ["input-small", "date_select", "date"], 
+                        :placeholder => Time.now.to_s(:form_date)
+      %span.help-inline
+        at
+      = form.text_field :release_date_time, 
+                        :placeholder => "(e.g. 5:00pm)", 
+                        :class => ["time", "input-small"]
+
+  .control-group.inline
+    .controls
+      = form.submit "Save Lecture", :class => 'btn btn-large btn-primary'
+
+%br
+%br
+
+.row-fluid
+  #player_container.span7
+    #player_placeholder.placeholder
+      .placeholder_text
+        %p Initializing YouTube...
+    #player
+    #question_timeline
+  #question.span5
+    #question_list{"data-question-source" => course_questions_path(@course)}
+      = form.fields_for(:in_lecture_questions) do |fields|
+        %div.in_lecture_question{:id => "in_lecture_question_#{fields.object_name.gsub(/[^0-9]+/,'')}"}
+          = fields.hidden_field :question_id
+          = fields.hidden_field :hours
+          = fields.hidden_field :minutes
+          = fields.hidden_field :seconds
+          - if fields.object.persisted?
+            = fields.hidden_field :_destroy
+    #question_placeholder.placeholder
+      .placeholder_text
+        %p#hint_without_video 
+          After you enter a link to your video, you can add questions to go with it here.
+        %p#hint_with_video 
+          To add questions to your video, pause the video at the desired time for your question and click "Add Question" below.
+      #question_index
+        %ol#added_questions
+        .button_margin
+        .button_container
+          = link_to "Add Question", "javascript:void(0)",
+                    :id => "add_question", :class => 'btn btn-large btn-primary'
+      #question_search
+        #question_search_fields
+          %label(for="question_id")
+            Available Questions
+          .search_field
+            = text_field_tag :search_key, "", :placeholder =>"Search for a question", "data-search-url" => course_question_search_path(@course, ""), :class => "search-query"
+            %i.icon-search
+        #search_results
+          = render_cell :question_search, :select_list, questions: @questions, course: @course
+        #question_preview_wrapper
+          #question_preview
+        .button_margin
+        .button_container
+          #question_time.alert.alert-info
+          = link_to "Scheduled Questions", "javascript:void(0)",
+                  :id => "back", :class => 'btn btn-large'
+          = link_to "Remove Question", "javascript:void(0)",
+                  :id => "remove_question", :class => 'btn btn-large btn-danger'
+      .question_editor

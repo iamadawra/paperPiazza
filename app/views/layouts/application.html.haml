@@ -1,0 +1,97 @@
+!!!
+
+%html
+  %head
+    %title= full_title(yield(:title))
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    -# TODO host mathjax ourselves.
+    = javascript_include_tag "https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"
+    %script{:type => "text/x-mathjax-config"}
+      MathJax.Hub.Config({
+      //extensions: ["tex2jax.js"],
+      tex2jax: {
+      //inlineMath: [ ['$','$'] ],
+      //displayMath: [],
+      processEscapes: true,
+      menuSettings: {
+      zoom: "None",
+      },
+      messageStyle: "none",
+      showProcessingMessages: false,
+
+      },
+      });
+    = yield :javascript
+    = csrf_meta_tags
+    /[if lt IE 9]
+      %script{src: "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+
+  %body{"data-controller" => controller_name, "data-action" => action_name}
+    %header.navbar.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          =collapse_button "#nav_content"
+          =link_to 'paperPiazza', "/", :class => [:brand]
+          
+          #nav_content.nav-collapse
+            %ul#course_menu.nav.pull-left
+              %li.divider-vertical
+              = render "layouts/course_menu"
+              %li.divider-vertical
+              %ul#main_menu.nav
+                - if current_user and @course and @course.id and @course.has_member?(current_user)
+                  -#%li= link_to "#{@course.name} Home", @course
+                  %li= link_to "Discussion", '#'
+                  %li.divider-vertical
+            %ul#account_controls.nav.navbar-text.pull-right
+              %li.divider-vertical
+              -if logged_in?
+                %li
+                  = link_to raw("<i class='icon-user'></i> My Profile"), account_path, :id => "account_settings"
+                %li.divider-vertical
+                %li
+                  = link_to "Edit Account", edit_account_path
+              -else
+                %li= link_to "Register", new_account_path
+              %li.divider-vertical
+              %li= login_link
+    #wrapper
+      #content_container.container-fluid
+        -flash.each do |key, value|
+          %div{class: ["alert", "alert-#{key}"]}
+            =value
+        #content.row-fluid
+          = yield
+        =# debug(params) if Rails.env.development?
+      .push
+    %footer
+      %hr
+      #footer_suggestions
+      #footer_copyright
+        Copyright &copy; 2012
+    -#.navbar.navbar-fixed-bottom
+    -#  .navbar-inner
+    -#    .container-fluid
+    -#      =collapse_button "#nav_content"
+    -#      =link_to 'coursesharing', "/", :class => [:brand]
+    -#      =link_to 'beta', "/", :class => [:brand], :id => :beta
+    -#      .nav-collapse
+    -#        %ul.course_menu.nav.pull-left
+    -#          %ul.main_menu.nav
+    -#            - if current_user and @course and @course.id and @course.has_member?(current_user)
+    -#              %li= link_to "#{@course.name} Home", @course
+    -#              %li= link_to "New Question", new_course_question_path(@course)
+    -#              %li= link_to "New Assignment", new_course_assignment_path(@course)
+    -#              %li= link_to "New Lecture", new_course_lecture_path(@course)
+    -#              %li= link_to "Assignments", course_assignments_path(@course)
+    -#        %ul.account_controls.nav.navbar-text.pull-right
+    -#          %li.divider-vertical
+    -#          -if logged_in?
+    -#            %li
+    -#              = link_to raw("<i class='icon-user'></i> Your Account"), account_path, :id => "account_settings"
+    -#          -else
+    -#            %li= link_to "Register", new_account_path
+    -#          %li.divider-vertical
+    -#          %li= login_link
+    

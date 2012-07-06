@@ -1,0 +1,29 @@
+-provide(:title, @lecture.title)
+
+#lecture.row-fluid
+  .row-fluid
+    .span12
+      %h1= @lecture.title
+  .row-fluid
+    .span12
+    -if @lecture.slides_url?
+      #slides_link.span12
+        = link_to "Download Slides", @lecture.slides_url
+
+  .row-fluid
+    - if @lecture.in_lecture_questions.count > 0
+      #player_container.span7{"data-video" => @lecture.youtube_id, 
+        "data-questions"  => @lecture.in_lecture_questions.view_info.to_json}
+        #player
+        #question_timeline
+      #question_container.span5
+    - else
+      #player_container.span9.big{"data-video" => @lecture.youtube_id}
+        #player
+  #questions
+    = render @lecture.in_lecture_questions
+
+  -if @course.has_instructor?(@current_user)
+    .row-fluid
+      .button_container.instructor-box
+        = link_to "Edit Lecture", edit_course_lecture_path(@course), :class=>[:btn,'btn-large', 'btn-primary']

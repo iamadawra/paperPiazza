@@ -1,0 +1,8 @@
+%ul#course_list.dropdown-menu
+  -for course in current_user.courses
+    -if @course and @course.id == course.id
+      -next
+    %li
+      = link_to course.to_s, course_path(course)
+  %li
+    = link_to "Browse More Papers", courses_path

@@ -1,0 +1,26 @@
+#assignments
+  %h1 Assignments
+.row-fluid
+-if @course.has_instructor?(@current_user)
+  .button_container.instructor-box
+    = link_to "Create Assignment", new_course_assignment_path(@course), :class=>[:btn,'btn-large', 'btn-primary']
+.row-fluid
+  #assignments-table.span10
+    %table.table.table-striped
+      %tr
+        %th
+          Title
+        %th
+          Release Date
+        %th
+          Due Date
+        %th
+          Resubmission Delay
+        %th
+          Points Achieved
+        %th
+          Points Possible
+        -if @course.has_instructor?(@current_user)
+          %th
+            Delete
+        = render @assignments

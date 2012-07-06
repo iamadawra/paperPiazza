@@ -1,0 +1,13 @@
+%li{:class => ["question_link", @feedback_class]}
+  = link_to render({:state => :full_title}, @index, @prefix), @anchor
+  %ul
+    - @question.questions.each do |q|
+      = render_cell(:questions,
+                    :navigation_link,
+                    { question: q,
+                      assignment: @assignment,
+                      user: @user,
+                      index: child_index_string(q.child_index),
+                      prefix: "Part",
+                      feedback: @feedback,
+                      anchor: "#Part_#{child_index_string(q.child_index)}"})

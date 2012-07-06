@@ -1,0 +1,11 @@
+- provide(:title, "Reset Your Password")
+
+%h1 Reset your password
+
+= form_tag password_resets_path do
+
+  = label_tag :email
+  = text_field_tag :email
+
+  .button_container
+    = submit_tag "Submit", :class => ["btn btn-large btn-primary"]

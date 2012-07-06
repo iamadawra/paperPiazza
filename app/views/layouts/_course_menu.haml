@@ -1,0 +1,11 @@
+%li#course_dropdown.dropdown
+  = link_to 'Browse All Papers', courses_path
+
+/  -if current_user and current_user.courses.count > 0
+/    - if @course and @course.persisted?
+/      = dropdown_link(@course.name, "#course_dropdown")
+/    - else
+/      = dropdown_link("My Research Papers", "#course_dropdown")
+/    = render :partial => "layouts/course_list"
+/  -else
+    

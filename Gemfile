@@ -11,6 +11,10 @@ end
 
 gem 'rails', '3.2.2'
 
+group :darwin do
+    gem 'rb-inotify', :require => false
+end
+
 # Mini controllers for subviews
 gem 'cells'
 
@@ -64,7 +68,7 @@ group :assets do
   gem 'compass', '0.12'
   gem 'compass-rails', '1.0.0'
 
-  gem 'bootstrap-sass', :git => 'https://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => "2.0.2"#'~> 2.0.1'
+  gem 'bootstrap-sass'#, :git => 'https://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => "2.0.2"#'~> 2.0.1'
   gem 'font-awesome-sass-rails'
 
   gem 'coffee-rails', '~> 3.2.1'

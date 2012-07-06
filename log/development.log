@@ -18424,3 +18424,55 @@ Completed 200 OK in 418ms (Views: 279.4ms | ActiveRecord: 24.7ms)
   [1m[35m (197.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120330075749')
   [1m[36m (197.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120329105147')[0m
   [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/" for 127.0.0.1 at 2012-07-05 18:13:58 -0700
+Processing by CoursesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" [0m
+  Rendered collection (0.0ms)
+  Rendered courses/index.html.haml within layouts/application (28.2ms)
+  Rendered layouts/_course_menu.haml (1.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+Completed 200 OK in 8231ms (Views: 8099.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2012-07-05 18:15:14 -0700
+Processing by UserSessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1[0m
+  Rendered user_sessions/new.html.haml within layouts/application (3.8ms)
+  Rendered layouts/_course_menu.haml (0.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/account/new" for 127.0.0.1 at 2012-07-05 18:15:16 -0700
+Processing by AccountsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1[0m
+  Rendered shared/_error_messages.haml (1.6ms)
+  Rendered accounts/_form.haml (7.6ms)
+  Rendered accounts/new.html.haml within layouts/application (39.3ms)
+  Rendered layouts/_course_menu.haml (0.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+Completed 200 OK in 62ms (Views: 58.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2012-07-05 18:15:18 -0700
+Processing by CoursesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" [0m
+  Rendered collection (0.0ms)
+  Rendered courses/index.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_course_menu.haml (0.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'MOICMmE-eI4dFUsiEyq6sg' LIMIT 1
+Completed 200 OK in 38ms (Views: 22.2ms | ActiveRecord: 0.8ms)

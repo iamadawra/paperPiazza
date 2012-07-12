@@ -7,7 +7,7 @@
     =course.conference
   %td
     =course.year
-  %td
+  %td{:style=>"align: center;"}
     -if current_user
       -unless course.has_member?(current_user)
         = form_tag course_memberships_path(course), :method => :post do
@@ -15,8 +15,8 @@
       -else
         -if course.has_student?(current_user)
           = link_to "Mark as Unread", course_membership_path(course, course.memberships.for_user(current_user)), :method => :delete, :class => ['btn'], :id => "leave_course#{course.id}"
-  %td
+  %td{:style=>"text-align: center;"}
     =course.rating
-  %td
+  %td{:style=>"white-space: nowrap;"}
     =link_to course.instructors.map{|i| i.name}.join(", "), "account/#{course.instructors.map{|i| i.id}[0]}"
 

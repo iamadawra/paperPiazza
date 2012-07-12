@@ -1,14 +1,5 @@
-# Coursesharing. 
-Work in progress..
-uses kalendale
-https://github.com/ChiperSoft/Kalendae
+# paperPiazza
 
-rails
+Where research goes social.
 
-list the other gems
-
-any icons
-
-font awesome
-
-bootstrap
+Under Contruction. 

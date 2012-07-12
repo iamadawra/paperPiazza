@@ -40,12 +40,14 @@
   #centeredmenu ul li a:hover {
     background:#369;
     color:#fff;
+    cursor: pointer;
   }
   #centeredmenu ul li a.active,
   #centeredmenu ul li a.active:hover {
     color:#fff;
     background:#000;
     font-weight:bold;
+    cursor: pointer;
   }}
   #centeredmenu ul li a.active,
   #centeredmenu ul li a.active:hover {
@@ -79,6 +81,7 @@
 #account
   %h1 My Profile
   %h2
+    = gravatar_for @user
     = @user.name
     = "(#{@user.email})"
   %div{:id => "centeredmenu"}
@@ -86,7 +89,7 @@
       %li{:id=>"first_tab"}
         %span
           %a
-            Recently Read Papers
+            Reading List
       %li{:id=>"second_tab"}
         %span
           %a
@@ -103,10 +106,14 @@
           %th
             Title
           %th
-            Author
+            Author(s)
+          %th
+            Conference
+          %th
+            Year
           %th
             Status
-          %th
+          %th{:style=>"white-space: nowrap;"}
             Reader Rating
             -for course in @user.courses
               - if course.has_instructor?(@user)
@@ -116,6 +123,10 @@
                   %td
                     =course.shortname
                   %td
+                    =course.conference
+                  %td
+                    =course.year
+                  %td
                     -if current_user
                       -unless course.has_member?(current_user)
                         = form_tag course_memberships_path(course), :method => :post do
@@ -123,7 +134,7 @@
                     -else
                       -if course.has_student?(current_user)
                         = link_to "Mark as Unread", course_membership_path(course, course.memberships.for_user(current_user)), :method => :delete, :class => ['btn'], :id => "leave_course#{course.id}"
-                  %td
+                  %td{:style=>"text-align:center;"}
                     =course.rating
   %div{:id => "TAB2", :style=>"margin: 5%;"}
     %h3

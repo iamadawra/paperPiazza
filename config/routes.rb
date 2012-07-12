@@ -23,8 +23,13 @@ Coursesharing::Application.routes.draw do
   # Want this at some point..
   resources :users
 
+  resources :courses do
+    post :rate, :on => :member
+  end
+
   resource :account, except: [:destroy]
   match '/register', to: 'accounts#new'
+  match '/account/:id', to: 'accounts#profile'
   
   match 'ability_switch', to: 'courses#switch'
   resources :password_resets

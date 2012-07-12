@@ -2,22 +2,24 @@
 #
 # Table name: courses
 #
-#  id          :integer         not null, primary key
+#  id          :integer          not null, primary key
 #  name        :string(255)
 #  shortname   :string(255)
-#  term        :string(255)
 #  description :text
 #  year        :integer
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #  rating      :integer
+#  conference  :string(255)
 #
 
 require 'has_roles'
 
 class Course < ActiveRecord::Base
 
-  attr_accessible :name, :shortname, :term, :description, :year, :scopetest, :rating
+  attr_accessible :name, :shortname, :description, :year, :scopetest, :rating, :conference
+  
+  ajaxful_rateable :stars => 10
 
   TERMS = ['Spring', 'Summer', 'Fall', 'Winter']
 
@@ -25,8 +27,8 @@ class Course < ActiveRecord::Base
   validates :shortname, length: {maximum: 255}
 
   validates_presence_of :description
-  validates_presence_of :term, :unless => "year.blank?"
-  validates_presence_of :year, :unless => "term.blank?"
+  validates_presence_of :conference
+  validates_presence_of :year
 
   validates_numericality_of :year, 
                             :only_integer => true, 
@@ -34,7 +36,7 @@ class Course < ActiveRecord::Base
 
   validates_inclusion_of :term, :in => TERMS, :allow_blank  => true
   validates_inclusion_of :year, 
-                         :in => -> {(Time.now.year)..(Time.now.year+2)}.call,
+                         :in => -> {(Time.now.year-50)..(Time.now.year)}.call,
                          :allow_blank => true
   has_many :memberships, :class_name => "CourseMembership", :dependent => :delete_all do
     def for_user(user)

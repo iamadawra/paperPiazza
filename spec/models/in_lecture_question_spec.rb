@@ -2,14 +2,14 @@
 #
 # Table name: in_lecture_questions
 #
-#  id          :integer         not null, primary key
-#  lecture_id  :integer         not null
-#  question_id :integer         not null
-#  hours       :integer         default(0), not null
-#  minutes     :integer         default(0), not null
-#  seconds     :integer         default(0), not null
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
+#  id          :integer          not null, primary key
+#  lecture_id  :integer          not null
+#  question_id :integer          not null
+#  hours       :integer          default(0), not null
+#  minutes     :integer          default(0), not null
+#  seconds     :integer          default(0), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 require 'spec_helper'

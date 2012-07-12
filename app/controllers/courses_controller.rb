@@ -24,6 +24,14 @@ class CoursesController < ApplicationController
   def show
   end
 
+  def rate
+    @course = Course.find(params[:id])
+    @course.rate(params[:stars], current_user, params[:dimension])
+    average = @course.rate_average(true, params[:dimension])
+    width = (average / @course.class.max_stars.to_f) * 100
+    render :json => {:id => @course.wrapper_dom_id(params), :average => average, :width => width}
+  end
+
   def index
   end
 
@@ -37,10 +45,5 @@ class CoursesController < ApplicationController
     else
       render :edit
     end
-  end
-  
-  def switch
-	@temp=ability.new
-	temp.switch
   end
 end

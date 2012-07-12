@@ -21,6 +21,9 @@ gem 'cells'
 # Authentication (has_secure_password)
 gem 'bcrypt-ruby', '~> 3.0.0', :require => 'bcrypt'
 
+gem 'ajaxful_rating', :git => 'git://github.com/edgarjs/ajaxful-rating.git', :branch => "rails3"
+
+
 # Authorization
 gem 'cancan'
 

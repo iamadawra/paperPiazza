@@ -2,16 +2,16 @@
 #
 # Table name: users
 #
-#  id                     :integer         not null, primary key
+#  id                     :integer          not null, primary key
 #  name                   :string(255)
 #  email                  :string(255)
 #  password_digest        :string(255)
-#  created_at             :datetime        not null
-#  updated_at             :datetime        not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #  remember_token         :string(255)
 #  perishable_token       :string(255)
 #  password_reset_sent_at :datetime
-#  admin                  :boolean         default(FALSE), not null
+#  admin                  :boolean          default(FALSE), not null
 #  owner_id               :integer
 #
 
@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   custom_has_secure_password
 
   attr_accessible :name, :email, :password, :password_confirmation
+
+  ajaxful_rater
 
   validates :name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

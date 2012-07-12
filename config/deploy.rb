@@ -18,8 +18,8 @@ set :rake, 'bundle exec rake'
 
 set :scm, "git"
 
-set :application, "coursesharing"
-set :repository,  "git@github.com:rll/coursesharing"
+set :application, "paperPiazza"
+set :repository,  "git@github.com:iamadawra/paperPiazza"
 set :user, "ubuntu"
 
 ssh_options[:forward_agent] = true

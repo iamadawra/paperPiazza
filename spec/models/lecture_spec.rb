@@ -2,7 +2,7 @@
 #
 # Table name: lectures
 #
-#  id             :integer         not null, primary key
+#  id             :integer          not null, primary key
 #  title          :string(255)
 #  video_url      :string(255)
 #  slides_url     :string(255)
@@ -10,8 +10,8 @@
 #  release_date   :datetime
 #  course_id      :integer
 #  video_duration :integer
-#  created_at     :datetime        not null
-#  updated_at     :datetime        not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 require 'spec_helper'

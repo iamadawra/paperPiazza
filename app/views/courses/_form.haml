@@ -9,5 +9,12 @@
 = form.label       :description, "Link to Source"
 = form.text_field  :description
 
+= form.label :year
+= form.select :year, Time.now.year-50..Time.now.year, :include_blank => true
+
+= form.label :conference
+= form.text_field :conference
+
+
 = form.label  :rating
 = form.select :rating, 1..10, :include_blank => true

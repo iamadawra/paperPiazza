@@ -2,15 +2,15 @@
 #
 # Table name: assignments
 #
-#  id             :integer         not null, primary key
+#  id             :integer          not null, primary key
 #  title          :string(255)
 #  release_date   :datetime
 #  due_date       :datetime
-#  total_points   :decimal(10, 4)  default(0.0)
+#  total_points   :decimal(10, 4)   default(0.0)
 #  course_id      :integer
-#  created_at     :datetime        not null
-#  updated_at     :datetime        not null
-#  feedback       :boolean         default(FALSE)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  feedback       :boolean          default(FALSE)
 #  resubmit_delay :integer
 #
 

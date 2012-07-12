@@ -7,12 +7,24 @@ class AccountsController < ApplicationController
     @user = current_user
   end
 
+  def profile
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = current_user
   end
 
   def new
     @user = User.new
+  end
+
+   def rate
+    @course = Course.find(params[:id])
+    @course.rate(params[:stars], current_user, params[:dimension])
+    average = @course.rate_average(true, params[:dimension])
+    width = (average / @course.class.max_stars.to_f) * 100
+    render :json => {:id => @course.wrapper_dom_id(params), :average => average, :width => width}
   end
 
   def update

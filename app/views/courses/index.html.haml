@@ -1,11 +1,24 @@
 -provide(:title, "Paper Index")
 
+:javascript
+  $(document.ready(function(){
+    $('#star').raty({
+      readOnly : true,
+      score    : 2
+    });
+  })
+
+-columns = [{:type => 'html', :class => "first"}, {:type => 'html'}, {:type => 'html'}, {:type => 'html'}, {:type => 'html'}, {:type => 'html'}, {:type => 'html', :class => "last"}]
+-datatable(columns, {:sort_by => "[2, 'desc']", :auto_width => 'true'})
+
+
 
 -if current_user
   .button_container
     = link_to "Add a Research Paper", new_course_path, :class => ["btn btn-large btn-primary"]
 
 %br
+
 
 #courses
   %h1 Browsing Research Papers
@@ -17,9 +30,13 @@
       %th
         Author
       %th
-        Added By
+        Conference
+      %th
+        Year
       %th
         Status
       %th
-        Reader Rating (Scale of 10)
+        Reader Rating
+      %th
+        Added By
     = render @courses

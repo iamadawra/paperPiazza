@@ -2,15 +2,15 @@
 #
 # Table name: courses
 #
-#  id          :integer         not null, primary key
+#  id          :integer          not null, primary key
 #  name        :string(255)
 #  shortname   :string(255)
-#  term        :string(255)
 #  description :text
 #  year        :integer
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #  rating      :integer
+#  conference  :string(255)
 #
 
 require 'spec_helper'

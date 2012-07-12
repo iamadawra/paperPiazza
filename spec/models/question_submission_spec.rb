@@ -2,14 +2,14 @@
 #
 # Table name: question_submissions
 #
-#  id          :integer         not null, primary key
+#  id          :integer          not null, primary key
 #  graded      :boolean
 #  score       :decimal(10, 4)
 #  answer      :text
 #  question_id :integer
 #  user_id     :integer
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 require 'spec_helper'

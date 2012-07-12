@@ -18,11 +18,14 @@
 //
 //= require jquery-ui-1.8.18.core_widget_mouse_draggable_droppable_sortable.min.js
 //
-//= require kalendae.js
-//
 //= require init
+//= require kalendae.js
 // Add your controller-specific JS below this line
-//
+//= require jquery.raty.js
+//= require jquery.idTabs.min.js
+//= require jquery.raty.min.js
+//= require jquery.ui.tabs.js
+//= require jquery.ui.widget.js
 //= require assignments
 //= require lectures
 //= require questions

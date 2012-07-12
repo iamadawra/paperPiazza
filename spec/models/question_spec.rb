@@ -2,7 +2,7 @@
 #
 # Table name: questions
 #
-#  id                  :integer         not null, primary key
+#  id                  :integer          not null, primary key
 #  type                :string(100)
 #  text                :text
 #  choices             :text
@@ -10,14 +10,14 @@
 #  explanations        :text
 #  parent_id           :integer
 #  child_index         :integer
-#  weight              :decimal(10, 4)  default(1.0)
+#  weight              :decimal(10, 4)   default(1.0)
 #  json                :text
 #  raw_source          :text
 #  raw_source_format   :string(255)
 #  javascript_includes :text
 #  parameters          :text
-#  created_at          :datetime        not null
-#  updated_at          :datetime        not null
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #  course_id           :integer
 #  title               :string(255)
 #

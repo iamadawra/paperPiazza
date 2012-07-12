@@ -39,4 +39,5 @@
         Reader Rating
       %th{:style=>"white-space: nowrap;"}
         Added By
-    = render @courses
+    //CODE FOR ORDERING FOUND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    = render @courses.order("created_at desc")

@@ -1,6 +1,12 @@
 -provide(:title, 'My Profile')
 
 :css
+  #solidline{
+    border-bottom:4px solid #000;
+    width: 85%;
+    margin: 0 0 0 15%;
+  }
+
   #centeredmenu {
     float:left;
     width:100%;
@@ -49,8 +55,6 @@
     font-weight:bold;
     cursor: pointer;
   }}
-  #centeredmenu ul li a.active,
-  #centeredmenu ul li a.active:hover {
 
 
 
@@ -79,11 +83,19 @@
 
 #account
 %div{:style=>"width: 100;"}
-  %h1 My Profile
+  %div{:id => "solidline"}
+  %br
   %h2
-    = gravatar_for @user
-    = @user.name
-    = "(#{@user.email})"
+    %table
+      %tr{:width=>"100%"}
+        %td{:width=>"24%"}
+          = gravatar_for @user
+        %td{:width=>"60%"}
+          = @user.name
+          %br
+          = "\n(#{@user.email})"
+        %td
+          ABOUT ME SECTION
   %div{:id => "centeredmenu"}
     %ul
       %li{:id=>"first_tab"}
@@ -138,7 +150,9 @@
                     =course.rating
   %div{:id => "TAB2", :style=>"margin: 5%;"}
     %h3
-      News Feed Goes here. Work in Progress.
+      %center
+        News Feed Goes here. Work in Progress.
   %div{:id => "TAB3", :style=>"margin: 5%;"}
     %h3
-      Contacts go here. Work in progress.
+      %center
+        Contacts go here. Work in progress.

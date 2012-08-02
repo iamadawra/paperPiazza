@@ -3,8 +3,7 @@
 :css
   #solidline{
     border-bottom:4px solid #000;
-    width: 85%;
-    margin: 0 0 0 15%;
+    width: 100%;
   }
 
   #centeredmenu {
@@ -151,7 +150,16 @@
   %div{:id => "TAB2", :style=>"margin: 5%;"}
     %h3
       %center
-        News Feed Goes here. Work in Progress.
+        %table#course_list.table.table-striped
+          -for course in @user.courses
+            - if course.has_instructor?(@user)
+              %tr
+                %td
+                  #{@user.name} added a new paper titled #{course.name}
+            -if course.has_member?(@user) and !course.has_instructor?(@user)
+              %tr
+                %td
+                  #{@user.name} read a new paper titled #{course.name}
   %div{:id => "TAB3", :style=>"margin: 5%;"}
     %h3
       %center

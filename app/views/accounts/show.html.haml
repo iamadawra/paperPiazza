@@ -1,6 +1,11 @@
 -provide(:title, 'My Profile')
 
 :css
+  #solidline{
+    border-bottom:4px solid #000;
+    width: 100%;
+  }
+
   #centeredmenu {
     float:left;
     width:100%;
@@ -49,8 +54,6 @@
     font-weight:bold;
     cursor: pointer;
   }}
-  #centeredmenu ul li a.active,
-  #centeredmenu ul li a.active:hover {
 
 
 
@@ -77,13 +80,21 @@
     });
   });
 
-
 #account
-  %h1 My Profile
+%div{:style=>"width: 100;"}
+  %div{:id => "solidline"}
+  %br
   %h2
-    = gravatar_for @user
-    = @user.name
-    = "(#{@user.email})"
+    %table
+      %tr{:width=>"100%"}
+        %td{:width=>"24%"}
+          = gravatar_for @user
+        %td{:width=>"60%"}
+          = @user.name
+          %br
+          = "\n(#{@user.email})"
+        %td
+          ABOUT ME SECTION
   %div{:id => "centeredmenu"}
     %ul
       %li{:id=>"first_tab"}
@@ -138,7 +149,18 @@
                     =course.rating
   %div{:id => "TAB2", :style=>"margin: 5%;"}
     %h3
-      News Feed Goes here. Work in Progress.
+      %center
+        %table#course_list.table.table-striped
+          -for course in @user.courses
+            - if course.has_instructor?(@user)
+              %tr
+                %td
+                  #{@user.name} added a new paper titled #{course.name}
+            -if course.has_member?(@user) and !course.has_instructor?(@user)
+              %tr
+                %td
+                  #{@user.name} read a new paper titled #{course.name}
   %div{:id => "TAB3", :style=>"margin: 5%;"}
     %h3
-      Contacts go here. Work in progress.
+      %center
+        Contacts go here. Work in progress.

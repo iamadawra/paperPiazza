@@ -13,6 +13,8 @@
 #  password_reset_sent_at :datetime
 #  admin                  :boolean          default(FALSE), not null
 #  owner_id               :integer
+#  topics_count           :integer          default(0)
+#  posts_count            :integer          default(0)
 #
 
 require 'spec_helper'

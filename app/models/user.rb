@@ -13,6 +13,8 @@
 #  password_reset_sent_at :datetime
 #  admin                  :boolean          default(FALSE), not null
 #  owner_id               :integer
+#  topics_count           :integer          default(0)
+#  posts_count            :integer          default(0)
 #
 
 require 'custom_has_secure_password'
@@ -40,6 +42,8 @@ class User < ActiveRecord::Base
 
   has_many :course_memberships
   has_many :courses, :through => :course_memberships
+  has_many :topics, :dependent => :destroy
+  has_many :posts, :dependent => :destroy
 
   has_many :question_submissions
 

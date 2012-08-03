@@ -18,6 +18,9 @@ end
 # Mini controllers for subviews
 gem 'cells'
 
+#Forum Gem
+gem 'forum_monster'
+
 # Authentication (has_secure_password)
 gem 'bcrypt-ruby', '~> 3.0.0', :require => 'bcrypt'
 

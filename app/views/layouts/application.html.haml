@@ -45,13 +45,13 @@
               %ul#main_menu.nav
                 - if current_user and @course and @course.id and @course.has_member?(current_user)
                   -#%li= link_to "#{@course.name} Home", @course
-                  %li= link_to "Discussion", '#'
+                  %li= link_to "Discussion", '/forums'
                   %li.divider-vertical
             %ul#account_controls.nav.navbar-text.pull-right
               %li.divider-vertical
               -if logged_in?
                 %li
-                  = link_to raw("<i class='icon-user'></i> My Profile"), account_path, :id => "account_settings"
+                  = link_to raw("<i class='icon-user'></i> "+"#{current_user.name}"), account_path, :id => "account_settings"
                 %li.divider-vertical
                 %li
                   = link_to "Edit Account", edit_account_path

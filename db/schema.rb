@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706031625) do
+ActiveRecord::Schema.define(:version => 20120803214419) do
 
   create_table "assignment_entries", :force => true do |t|
     t.integer  "number"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(:version => 20120706031625) do
     t.integer  "resubmit_delay"
   end
 
+  create_table "categories", :force => true do |t|
+    t.string   "title"
+    t.boolean  "state",      :default => true
+    t.integer  "position",   :default => 0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "course_memberships", :force => true do |t|
     t.integer  "course_id",               :null => false
     t.integer  "user_id",                 :null => false
@@ -56,7 +64,18 @@ ActiveRecord::Schema.define(:version => 20120706031625) do
     t.datetime "updated_at",  :null => false
     t.integer  "rating"
     t.string   "conference"
-    t.string   "term"
+  end
+
+  create_table "forums", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "state",        :default => true
+    t.integer  "topics_count", :default => 0
+    t.integer  "posts_count",  :default => 0
+    t.integer  "position",     :default => 0
+    t.integer  "category_id"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "friendships", :force => true do |t|
@@ -87,6 +106,15 @@ ActiveRecord::Schema.define(:version => 20120706031625) do
     t.integer  "video_duration"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.text     "body"
+    t.integer  "forum_id"
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "question_submissions", :force => true do |t|
@@ -121,6 +149,19 @@ ActiveRecord::Schema.define(:version => 20120706031625) do
 
   add_index "questions", ["parent_id"], :name => "index_questions_on_parent_id"
 
+  create_table "rates", :force => true do |t|
+    t.integer  "rater_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.integer  "stars",         :null => false
+    t.string   "dimension"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], :name => "index_rates_on_rateable_id_and_rateable_type"
+  add_index "rates", ["rater_id"], :name => "index_rates_on_rater_id"
+
   create_table "rubric_items", :force => true do |t|
     t.text     "title"
     t.text     "description"
@@ -128,6 +169,18 @@ ActiveRecord::Schema.define(:version => 20120706031625) do
     t.integer  "question_id"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "topics", :force => true do |t|
+    t.string   "title"
+    t.integer  "hits",        :default => 0
+    t.boolean  "sticky",      :default => false
+    t.boolean  "locked",      :default => false
+    t.integer  "posts_count"
+    t.integer  "forum_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -141,6 +194,8 @@ ActiveRecord::Schema.define(:version => 20120706031625) do
     t.datetime "password_reset_sent_at"
     t.boolean  "admin",                  :default => false, :null => false
     t.integer  "owner_id"
+    t.integer  "topics_count",           :default => 0
+    t.integer  "posts_count",            :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

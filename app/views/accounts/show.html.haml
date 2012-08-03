@@ -62,6 +62,7 @@
     $('#TAB2').hide();
     $('#TAB3').hide();
     $('#first_tab').click(function(){
+      $('#first_tab').css("color:#fff; background:#000; font-weight:bold; cursor: pointer;")
       $('#TAB2').hide();
       $('#TAB3').hide();
       $('#TAB1').show();
@@ -87,13 +88,13 @@
   %h2
     %table
       %tr{:width=>"100%"}
-        %td{:width=>"24%"}
+        %th{:width=>"24%"}
           = gravatar_for @user
-        %td{:width=>"60%"}
+        %th{:width=>"60%"}
           = @user.name
           %br
           = "\n(#{@user.email})"
-        %td
+        %th
           ABOUT ME SECTION
   %div{:id => "centeredmenu"}
     %ul
@@ -155,7 +156,7 @@
             - if course.has_instructor?(@user)
               %tr
                 %td
-                  #{@user.name} added a new paper titled #{course.name}
+                  = link_to "#{@user.name} added a new paper:  '#{course.name}' ", course
             -if course.has_member?(@user) and !course.has_instructor?(@user)
               %tr
                 %td

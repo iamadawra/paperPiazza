@@ -13,6 +13,10 @@ gem 'rails', '3.2.2'
 
 gem 'activerecord-postgresql-adapter'
 
+if gem_available?('pg')
+  gem 'pg'
+end
+
 group :darwin do
     gem 'rb-inotify', :require => false
 end

@@ -39,6 +39,8 @@ gem 'custom_error_message', :git => 'git://github.com/arjun810/custom-err-msg.gi
 # Required for processing questions. Note that you still need pandoc installed.
 gem 'pandoc-ruby'
 
+gem 'thin'
+
 # Will want this again at some point for video chat.
 #gem 'opentok'
 

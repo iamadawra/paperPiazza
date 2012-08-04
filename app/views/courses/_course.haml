@@ -11,10 +11,13 @@
     -if current_user
       -unless course.has_member?(current_user)
         = form_tag course_memberships_path(course), :method => :post do
-          = submit_tag "Read Paper", :class => ['btn'], :id => "join_course#{course.id}"
+          = submit_tag "Add to my Reading List", :class => ['btn'], :id => "join_course#{course.id}"
       -else
         -if course.has_student?(current_user)
-          = link_to "Mark as Unread", course_membership_path(course, course.memberships.for_user(current_user)), :method => :delete, :class => ['btn'], :id => "leave_course#{course.id}"
+          = link_to "Remove from my Reading List", course_membership_path(course, course.memberships.for_user(current_user)), :method => :delete, :class => ['btn'], :id => "leave_course#{course.id}"
+        -if course.has_instructor?(current_user)
+          %center
+            Paper has been read
   %td{:style=>"text-align: center;"}
     =course.rating
   %td{:style=>"white-space: nowrap;"}

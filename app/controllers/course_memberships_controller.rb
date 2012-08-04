@@ -11,7 +11,7 @@ class CourseMembershipsController < ApplicationController
     course_membership = CourseMembership.new(user: current_user, course: @course, role: CourseMembership.student_role)
 
     if course_membership.save
-      flash[:success] = "You read #{@course.name}!"
+      flash[:success] = "You added #{@course.name} to your Reading List!"
       redirect_to @course
     else
       flash[:error] = "Sorry, you were unable to read #{@course.name}. Please try again later."
@@ -30,7 +30,7 @@ class CourseMembershipsController < ApplicationController
     end
 
     @course_membership.destroy
-    flash[:notice] = "You've marked #{@course.name} as unread"
+    flash[:notice] = "You removed #{@course.name} from your Reading List!"
     redirect_to courses_path
   end
 

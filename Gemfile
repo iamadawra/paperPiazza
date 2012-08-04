@@ -11,6 +11,8 @@ end
 
 gem 'rails', '3.2.2'
 
+gem 'activerecord-postgresql-adapter'
+
 group :darwin do
     gem 'rb-inotify', :require => false
 end

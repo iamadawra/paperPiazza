@@ -101,7 +101,7 @@ group :development do
   end
 
   # Faster than webrick and doesn't have annoying spam
-  gem 'thin'
+  #gem 'thin'
 
   # For debugging
   gem 'pry'

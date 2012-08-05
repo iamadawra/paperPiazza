@@ -6,29 +6,25 @@
     
 
   .details
-    %h2
-      Author(s): 
-      = @course.shortname
+    %h4
+      %center
+        Author(s): 
+        = @course.shortname
 
     %p
-      %h3
+      %h4
         %center
           = @course.conference
 
     %p
-      %h3
+      %h4
         %center
           = @course.year  
 
     %p
     %center
-      Go to Paper:  
+      Original Location:  
       = link_to @course.description, @course.description
-
-  %p
-    %p
-      %center
-        %iframe{:allowscriptaccess => "always", :allowFullScreen => "true", :frameborder => "2", :height => "880", :src => "#{@course.description}", :title => "Original Paper", :width => "850"}
 
   %p
     %p
@@ -36,3 +32,10 @@
         %center
           .instructor-box.button_container
             = link_to "Edit Paper Information", edit_course_path(@course), :class => ["btn btn-large btn-primary"]
+
+  %p
+    %p
+      %center
+        %iframe{:allowscriptaccess => "always", :allowFullScreen => "true", :frameborder => "2", :height => "880", :src => "#{@course.description}", :title => "Original Paper", :width => "950"}
+
+  

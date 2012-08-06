@@ -30,14 +30,14 @@
       %th
         Author(s)
       %th
-        Conference
+        Conference/Journal
       %th
-        Year
+        = sortable "year", "Year"
       %th{:style=>"text-align: center;"}
         My Reading Status
       %th{:style=>"white-space: nowrap;"}
-        Reader Rating
+        = sortable "rating", "Rating"
       %th{:style=>"white-space: nowrap;"}
         Added By
     //CODE FOR ORDERING FOUND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    = render @courses.order("created_at desc")
+    = render @courses

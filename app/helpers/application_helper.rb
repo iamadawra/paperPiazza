@@ -1,5 +1,11 @@
 module ApplicationHelper
 
+  def sortable(column, title = nil)
+    title ||= column.titleize
+    direction = column == params[:sort] && params[:direction] == "asc" ? "desc" : "asc"
+    link_to title, :sort => column, :direction => direction
+  end
+
   def full_title(page_title)
 
     base_title = "paperPiazza"

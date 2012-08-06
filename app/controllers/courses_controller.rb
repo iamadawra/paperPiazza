@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
     if @course.save 
       membership = CourseMembership.new(course: @course, user: current_user, role: CourseMembership.instructor_role)
 	  if membership.save
-        flash[:success] = "You've created '#{@course.name}.'"
+        flash[:success] = "You've added '#{@course.name}.'"
         redirect_to @course
       else
         flash[:error] = "There was a problem adding your paper."
@@ -33,6 +33,7 @@ class CoursesController < ApplicationController
   end
 
   def index
+    @courses = Course.order(params[:sort] + " " + params[:direction])
   end
 
   def edit
@@ -45,5 +46,13 @@ class CoursesController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def sort_column
+    Course.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

@@ -2,6 +2,8 @@ class CoursesController < ApplicationController
 
   load_and_authorize_resource :course
 
+  handles_sortable_columns
+
   def new
   end
 
@@ -33,7 +35,8 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.order(params[:sort] + " " + params[:direction])
+    order = sortable_column_order
+    @courses = Course.order(order).paginate(:per_page=>3, :page=>params[:page])
   end
 
   def edit

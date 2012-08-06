@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+
+en:
+  will_paginate:
+  previous_label: '‹'
+  next_label: '›'

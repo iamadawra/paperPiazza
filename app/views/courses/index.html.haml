@@ -32,12 +32,14 @@
       %th
         Conference/Journal
       %th
-        = sortable "year", "Year"
+        = sortable_column "Year"
       %th{:style=>"text-align: center;"}
         My Reading Status
       %th{:style=>"white-space: nowrap;"}
-        = sortable "rating", "Rating"
+        = sortable_column "Rating"
       %th{:style=>"white-space: nowrap;"}
         Added By
     //CODE FOR ORDERING FOUND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     = render @courses
+%center
+  = will_paginate @courses, :previous_label => 'Previous', :next_label => 'Next'

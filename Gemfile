@@ -11,6 +11,10 @@ end
 
 gem 'rails', '3.2.2'
 
+gem 'will_paginate', '3.0'
+
+gem "handles_sortable_columns"
+
 gem 'activerecord-postgresql-adapter'
 
 if gem_available?('pg')

@@ -36,7 +36,7 @@ class CoursesController < ApplicationController
 
   def index
     order = sortable_column_order
-    @courses = Course.search(params[:search]).order(order).paginate(:per_page=>3, :page=>params[:page])
+    @courses = Course.search(params[:search]).order(order).paginate(:per_page=>10, :page=>params[:page])
   end
 
   def edit

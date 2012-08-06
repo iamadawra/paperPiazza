@@ -18,6 +18,8 @@ require 'has_roles'
 class Course < ActiveRecord::Base
 
   attr_accessible :name, :shortname, :description, :year, :scopetest, :rating, :conference
+
+  acts_as_commentable
   
   ajaxful_rateable :stars => 10
 

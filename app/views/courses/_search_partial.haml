@@ -1,0 +1,23 @@
+#courses
+  %h1 Top Search Results
+
+  %table#course_list.table.table-striped
+    %tr
+      %th
+        Title
+      %th
+        Author(s)
+      %th
+        Conference/Journal
+      %th
+        = sortable_column "Year"
+      %th{:style=>"text-align: center;"}
+        My Reading Status
+      %th{:style=>"white-space: nowrap;"}
+        = sortable_column "Rating"
+      %th{:style=>"white-space: nowrap;"}
+        Added By
+    //CODE FOR ORDERING FOUND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    = render @courses
+%center
+  = will_paginate @courses, :previous_label => 'Previous', :next_label => 'Next'

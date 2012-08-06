@@ -17,6 +17,8 @@ gem "handles_sortable_columns"
 
 gem 'activerecord-postgresql-adapter'
 
+gem 'acts_as_commentable_with_threading'
+
 if gem_available?('pg')
   gem 'pg'
 end

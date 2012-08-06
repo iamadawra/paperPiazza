@@ -11,16 +11,25 @@
 -columns = [{:type => 'html', :class => "first"}, {:type => 'html'}, {:type => 'html'}, {:type => 'html'}, {:type => 'html'}, {:type => 'html'}, {:type => 'html', :class => "last"}]
 -datatable(columns, {:sort_by => "[2, 'desc']", :auto_width => 'true'})
 
-
-
--if current_user
-  .button_container
-    = link_to "Add a Research Paper", new_course_path, :class => ["btn btn-large btn-primary"]
+%center
+  %table{:style => "border-color:white; width: 30%;"}
+    %tr
+      %th
+        %p
+        %br
+        %br
+          = form_tag courses_path, :method => 'get', :id => "course_search" do
+            = text_field_tag :search, params[:search], :placeholder => "Find a Research Paper"
+      %th
+        %h2
+          or
+      %th
+        -if current_user
+          .button_container
+            = link_to "Add a Research Paper", new_course_path, :class => ["btn btn-large btn-primary"]
 
 %br
-  %center
-    = form_tag courses_path, :method => 'get', :id => "course_search" do
-      = text_field_tag :search, params[:search]
-      =submit_tag "Find Paper", :class => ['btn']
+%br
+
 %div{:id => "courses"}
   = render partial: 'index_partial'

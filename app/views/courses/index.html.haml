@@ -19,29 +19,8 @@
 
 %br
   %center
-    = form_tag courses_path, :method => 'get' do
+    = form_tag courses_path, :method => 'get', :id => "course_search" do
       = text_field_tag :search, params[:search]
-
-#courses
-  %h1 Browsing Research Papers
-
-  %table#course_list.table.table-striped
-    %tr
-      %th
-        Title
-      %th
-        Author(s)
-      %th
-        Conference/Journal
-      %th
-        = sortable_column "Year"
-      %th{:style=>"text-align: center;"}
-        My Reading Status
-      %th{:style=>"white-space: nowrap;"}
-        = sortable_column "Rating"
-      %th{:style=>"white-space: nowrap;"}
-        Added By
-    //CODE FOR ORDERING FOUND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    = render @courses
-%center
-  = will_paginate @courses, :previous_label => 'Previous', :next_label => 'Next'
+      =submit_tag "Find Paper", :class => ['btn']
+%div{:id => "courses"}
+  = render partial: 'index_partial'

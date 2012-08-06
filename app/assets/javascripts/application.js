@@ -21,6 +21,7 @@
 //= require init
 //= require kalendae.js
 // Add your controller-specific JS below this line
+//= require ajax_calls.js
 //= require jquery.raty.js
 //= require jquery.idTabs.min.js
 //= require jquery.raty.min.js

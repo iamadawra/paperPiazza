@@ -18,7 +18,9 @@
     = link_to "Add a Research Paper", new_course_path, :class => ["btn btn-large btn-primary"]
 
 %br
-
+  %center
+    = form_tag courses_path, :method => 'get' do
+      = text_field_tag :search, params[:search]
 
 #courses
   %h1 Browsing Research Papers

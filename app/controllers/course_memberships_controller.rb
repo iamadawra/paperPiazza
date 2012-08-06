@@ -12,7 +12,10 @@ class CourseMembershipsController < ApplicationController
 
     if course_membership.save
       flash[:success] = "You added #{@course.name} to your Reading List!"
-      redirect_to @course
+      #Temporary fix. Refreshes the current page with the flash:
+      redirect_to :back
+      #OPTION TO REDIRECT TO COURSE PAGE:
+      #redirect_to @course
     else
       flash[:error] = "Sorry, you were unable to read #{@course.name}. Please try again later."
       redirect_to courses_path
@@ -31,7 +34,8 @@ class CourseMembershipsController < ApplicationController
 
     @course_membership.destroy
     flash[:notice] = "You removed #{@course.name} from your Reading List!"
-    redirect_to courses_path
+    redirect_to :back
+    #redirect_to courses_path
   end
 
 end

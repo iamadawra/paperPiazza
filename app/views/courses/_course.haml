@@ -21,5 +21,8 @@
   %td{:style=>"text-align: center;"}
     =course.rating
   %td{:style=>"white-space: nowrap;"}
-    =link_to course.instructors.map{|i| i.name}.join(", "), "account/#{course.instructors.map{|i| i.id}[0]}"
+    - if current_user
+      =link_to course.instructors.map{|i| i.name}.join(", "), "account/#{course.instructors.map{|i| i.id}[0]}"
+    -else
+      = course.instructors.map{|i| i.name}.join(", ")      
 

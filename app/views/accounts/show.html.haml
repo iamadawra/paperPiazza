@@ -110,9 +110,10 @@
     %ul
       %li{:id=>"first_tab"}
         %span
-          -if @user.id == current_user.id
-            %a
-              My Reading List
+          -if current_user
+            -if @user.id == current_user.id
+              %a
+                My Reading List
           -else
             %a
               #{@user.name}'s Reading List

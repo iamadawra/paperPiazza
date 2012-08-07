@@ -11,7 +11,7 @@
             - user = User.find(user_id)
             - course = Course.find(course_id)
             - if activity.action == "ADDED_TO_READING_LIST"
-              = link_to "#{user.name}", user
+              = link_to "#{user.name}", "account/#{user_id}"
               added 
               = link_to "'#{course.name}'", course
               to his reading list.

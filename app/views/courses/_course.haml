@@ -7,8 +7,8 @@
     =course.conference
   %td
     =course.year
-  %td{:style=>"align: center;"}
-    -if current_user
+  -if current_user
+    %td{:style=>"align: center;"}
       -unless course.has_member?(current_user)
         = form_tag course_memberships_path(course), :method => :post do
           = submit_tag "Add to my Reading List", :class => ['btn'], :id => "join_course#{course.id}"

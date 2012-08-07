@@ -11,8 +11,9 @@
         Conference/Journal
       %th
         = sortable_column "Year"
-      %th{:style=>"text-align: center;"}
-        My Reading Status
+      -if current_user
+        %th{:style=>"text-align: center;"}
+          My Reading Status
       %th{:style=>"white-space: nowrap;"}
         = sortable_column "Rating"
       %th{:style=>"white-space: nowrap;"}

@@ -4,6 +4,8 @@ Coursesharing::Application.routes.draw do
 
   root to:'activity#feed'
 
+  resources :courses, :path => "papers"
+
   resources :categories, :except => [:index, :show]
   resources :forums, :except => :index do
     resources :topics, :shallow => true, :except => :index do

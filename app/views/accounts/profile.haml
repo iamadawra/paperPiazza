@@ -47,12 +47,7 @@
     color:#fff;
     cursor: pointer;
   }
-  #centeredmenu ul li a.active{
-    color:#fff;
-    background:#000;
-    font-weight:bold;
-    cursor: pointer;
-  }
+  #centeredmenu ul li a.active,
   #centeredmenu ul li a.active:hover {
     color:#fff;
     background:#000;
@@ -67,22 +62,33 @@
     $('#TAB2').hide();
     $('#TAB3').hide();
     $('#first_tab').click(function(){
+      $('#second_tab a').removeClass("active");
+      $('#third_tab a').removeClass("active");
+      $('#first_tab a').addClass("active");
       $('#TAB2').hide();
       $('#TAB3').hide();
       $('#TAB1').show();
     });
 
     $('#second_tab').click(function(){
+      $('#first_tab a').removeClass("active");
+      $('#third_tab a').removeClass("active");
+      $('#second_tab a').addClass("active");
       $('#TAB1').hide();
       $('#TAB3').hide();
       $('#TAB2').show();
     });
 
     $('#third_tab').click(function(){
+      $('#second_tab a').removeClass("active");
+      $('#first_tab a').removeClass("active");
+      $('#third_tab a').addClass("active");
       $('#TAB1').hide();
       $('#TAB2').hide();
       $('#TAB3').show();
     });
+    
+    $('#first_tab a').addClass("active");
   });
 
 #account
@@ -104,23 +110,19 @@
     %ul
       %li{:id=>"first_tab"}
         %span
-          -if current_user
-            -if @user.id == current_user.id
-              %a{:id =>"rl_1", :style=>"active: true;"}
-                My Reading List
-            -else
-              %a{:id=>"rl_2"}
-                #{@user.name}'s Reading List
+          -if @user.id == current_user.id
+            %a
+              My Reading List
           -else
-            %a{:id=>"rl_2"}
+            %a
               #{@user.name}'s Reading List
       %li{:id=>"second_tab"}
         %span
-          %a{:id=>"nf"}
+          %a
             News Feed
       %li{:id=>"third_tab"}
         %span
-          %a{:id=>"c"}
+          %a
             Contacts
   %p
     %div{:id => "TAB1", :style=>"margin: 5%;"}

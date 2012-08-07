@@ -62,23 +62,33 @@
     $('#TAB2').hide();
     $('#TAB3').hide();
     $('#first_tab').click(function(){
-      $('#first_tab').css("color:#fff; background:#000; font-weight:bold; cursor: pointer;")
+      $('#second_tab a').removeClass("active");
+      $('#third_tab a').removeClass("active");
+      $('#first_tab a').addClass("active");
       $('#TAB2').hide();
       $('#TAB3').hide();
       $('#TAB1').show();
     });
 
     $('#second_tab').click(function(){
+      $('#first_tab a').removeClass("active");
+      $('#third_tab a').removeClass("active");
+      $('#second_tab a').addClass("active");
       $('#TAB1').hide();
       $('#TAB3').hide();
       $('#TAB2').show();
     });
 
     $('#third_tab').click(function(){
+      $('#second_tab a').removeClass("active");
+      $('#first_tab a').removeClass("active");
+      $('#third_tab a').addClass("active");
       $('#TAB1').hide();
       $('#TAB2').hide();
       $('#TAB3').show();
     });
+    
+    $('#first_tab a').addClass("active");
   });
 
 #account

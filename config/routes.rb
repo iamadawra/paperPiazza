@@ -1,4 +1,4 @@
-Coursesharing::Application.routes.draw do
+Paperpiazza::Application.routes.draw do
 
   get "profile/feed"
 

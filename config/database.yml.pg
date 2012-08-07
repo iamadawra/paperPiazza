@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: coursesharing_development
+  database: paperpiazza_development
   pool: 5
   username: postgres
   password: postgres
@@ -17,7 +17,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: coursesharing_test
+  database: paperpiazza_test
   pool: 5
   username: postgres
   password: postgres
@@ -25,7 +25,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: coursesharing_production
+  database: paperpiazza_production
   pool: 5
-  username: coursesharing
+  username: paperpiazza
   password: courseswanttobefree33

@@ -21,7 +21,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: coursesharing_production
+  database: paperpiazza_production
   pool: 5
   username: postgres
   password: postgres

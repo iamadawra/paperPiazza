@@ -6,7 +6,7 @@ require 'rake'
 
 require File.expand_path('../config/application', __FILE__)
 
-Coursesharing::Application.load_tasks
+Paperpiazza::Application.load_tasks
 require 'annotate/tasks'
 
 require 'rspec/core/rake_task'

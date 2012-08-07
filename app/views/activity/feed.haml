@@ -1,0 +1,28 @@
+%h1
+  Activity Feed
+%table#course_list.table.table-striped
+  - for activity in @activities
+    %tr
+      %td
+        %h4
+          %center
+            - user_id = activity.user_id
+            - course_id = activity.course_id
+            - user = User.find(user_id)
+            - course = Course.find(course_id)
+            - if activity.action == "ADDED_TO_READING_LIST"
+              = link_to "#{user.name}", user
+              added 
+              = link_to "'#{course.name}'", course
+              to his reading list.
+            - if activity.action == "REMOVED_FROM_READING_LIST"
+              = link_to "#{user.name}", user
+              removed 
+              = link_to "'#{course.name}'", course
+              from his reading list.
+            - if activity.action == "ADDED_NEW_PAPER"
+              = link_to "#{user.name}", user
+              added a new paper: 
+              = link_to "'#{course.name}'", course
+            %br
+            %p

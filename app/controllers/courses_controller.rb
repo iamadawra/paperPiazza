@@ -12,6 +12,8 @@ class CoursesController < ApplicationController
       membership = CourseMembership.new(course: @course, user: current_user, role: CourseMembership.instructor_role)
 	  if membership.save
         flash[:success] = "You've added '#{@course.name}.'"
+        activity = Activity.new(user_id:current_user.id, course_id: @course.id, action: "ADDED_NEW_PAPER")
+        activity.save
         redirect_to @course
       else
         flash[:error] = "There was a problem adding your paper."

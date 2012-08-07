@@ -1,5 +1,9 @@
 Coursesharing::Application.routes.draw do
 
+  get "profile/feed"
+
+  match '/feed', to:'activity#feed'
+
   resources :categories, :except => [:index, :show]
   resources :forums, :except => :index do
     resources :topics, :shallow => true, :except => :index do

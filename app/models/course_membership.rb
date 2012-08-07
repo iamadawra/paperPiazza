@@ -45,6 +45,5 @@ class CourseMembership < ActiveRecord::Base
   def self.ta_role
     ROLE_TA
   end
-
 end
 

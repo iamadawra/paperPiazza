@@ -9,9 +9,10 @@ class CourseMembershipsController < ApplicationController
     end
 
     course_membership = CourseMembership.new(user: current_user, course: @course, role: CourseMembership.student_role)
-
     if course_membership.save
       flash[:success] = "You added #{@course.name} to your Reading List!"
+      activity = Activity.new(user_id:current_user.id, course_id: @course.id, action: "ADDED_TO_READING_LIST")
+      activity.save
       #Temporary fix. Refreshes the current page with the flash:
       redirect_to :back
       #OPTION TO REDIRECT TO COURSE PAGE:
@@ -33,6 +34,8 @@ class CourseMembershipsController < ApplicationController
     end
 
     @course_membership.destroy
+    activity = Activity.new(user_id:current_user.id, course_id: @course.id, action: "REMOVED_FROM_READING_LIST")
+    activity.save
     flash[:notice] = "You removed #{@course.name} from your Reading List!"
     redirect_to :back
     #redirect_to courses_path

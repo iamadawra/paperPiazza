@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120806234242) do
+ActiveRecord::Schema.define(:version => 20120807090557) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "time"
+    t.string   "action"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "assignment_entries", :force => true do |t|
     t.integer  "number"
@@ -116,6 +125,26 @@ ActiveRecord::Schema.define(:version => 20120806234242) do
     t.integer  "video_duration"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "pfeed_deliveries", :force => true do |t|
+    t.integer  "pfeed_receiver_id"
+    t.string   "pfeed_receiver_type"
+    t.integer  "pfeed_item_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "pfeed_items", :force => true do |t|
+    t.string   "type"
+    t.integer  "originator_id"
+    t.string   "originator_type"
+    t.integer  "participant_id"
+    t.string   "participant_type"
+    t.text     "data"
+    t.datetime "expiry"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "posts", :force => true do |t|

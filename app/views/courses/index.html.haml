@@ -13,14 +13,14 @@
   %br
   %br
     = form_tag courses_path, :method => 'get', :id => "course_search" do
-      = text_field_tag :search, params[:search], :style=>"font-size: 18px; font-style: italic; width: 900px", :maxlength=>"20", :placeholder => "Find a Research Paper..."
+      = text_field_tag :search, params[:search], :style=>"font-size: 18px; font-style: italic; width: 900px", :maxlength=>"20", :placeholder => "Find a Research Paper, Author, Conference or Journal"
       
     -if current_user
       .button_container
         = link_to "Add a Research Paper", new_course_path, :class => ["btn btn-large btn-primary"]
 
-%br
-%br
+      %br
+      %br
 
 %div{:id => "courses"}
   = render partial: 'index_partial'

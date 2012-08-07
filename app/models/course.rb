@@ -88,7 +88,7 @@ class Course < ActiveRecord::Base
   
   def self.search(search)
     if search
-      where('name LIKE ?', "%#{search}%")
+      where(['name LIKE ? OR description LIKE? OR year LIKE? OR conference LIKE? OR shortname LIKE?', ["%#{search}%"]*5].flatten)
     else
       scoped
     end

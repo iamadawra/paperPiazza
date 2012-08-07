@@ -17,10 +17,10 @@ require 'has_roles'
 
 class Course < ActiveRecord::Base
 
-  attr_accessible :name, :shortname, :description, :year, :scopetest, :rating, :conference
-
-  acts_as_commentable
+  has_many :comments, :dependent => :destroy
   
+  attr_accessible :name, :shortname, :description, :year, :scopetest, :rating, :conference, :title, :teaser, :body, :version, :changelog
+
   ajaxful_rateable :stars => 10
 
   TERMS = ['Spring', 'Summer', 'Fall', 'Winter']

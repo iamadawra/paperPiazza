@@ -17,7 +17,7 @@ Coursesharing::Application.routes.draw do
   end
 
   resources :courses do
-    resources :comments
+    resources :comments, :only => [:create, :destroy]
     resources :memberships, :controller => :course_memberships, :only => [:create, :destroy]
 
     resources :lectures

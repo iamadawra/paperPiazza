@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   # Doesn't perform validation
   custom_has_secure_password
 
+  has_many :comments, :dependent => :destroy
+
   attr_accessible :name, :email, :password, :password_confirmation
 
   ajaxful_rater

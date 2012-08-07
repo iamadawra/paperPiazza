@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120803214419) do
+ActiveRecord::Schema.define(:version => 20120806234242) do
 
   create_table "assignment_entries", :force => true do |t|
     t.integer  "number"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(:version => 20120803214419) do
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.string   "body",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["user_id", "course_id"], :name => "index_comments_on_user_id_and_course_id"
 
   create_table "course_memberships", :force => true do |t|
     t.integer  "course_id",               :null => false

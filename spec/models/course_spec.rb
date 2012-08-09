@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #  rating      :integer
 #  conference  :string(255)
+#  tags        :text
 #
 
 require 'spec_helper'

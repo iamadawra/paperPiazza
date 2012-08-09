@@ -53,9 +53,6 @@ Paperpiazza::Application.routes.draw do
   post  '/login',  to: 'user_sessions#create', :as => :login_post
   match '/logout', to: 'user_sessions#destroy'
 
-  root to: 'courses#index'
-
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

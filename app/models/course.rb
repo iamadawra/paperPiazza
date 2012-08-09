@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #  rating      :integer
 #  conference  :string(255)
+#  tags        :text
 #
 
 require 'has_roles'
@@ -18,8 +19,9 @@ require 'has_roles'
 class Course < ActiveRecord::Base
 
   has_many :comments, :dependent => :destroy
+  has_many :tags
   
-  attr_accessible :name, :shortname, :description, :year, :scopetest, :rating, :conference, :title, :teaser, :body, :version, :changelog
+  attr_accessible :name, :tags, :shortname, :description, :year, :scopetest, :rating, :conference, :title, :teaser, :body, :version, :changelog
 
   ajaxful_rateable :stars => 10
 
@@ -28,15 +30,15 @@ class Course < ActiveRecord::Base
   validates :name, presence: true, length: {maximum: 255}
   validates :shortname, length: {maximum: 255}
 
-  validates_presence_of :description
+  validates_presence_of :description, presence: true, format: {with: %r{\.(pdf)$}i}
   validates_presence_of :conference
   validates_presence_of :year
+  validates_uniqueness_of :name
 
   validates_numericality_of :year, 
                             :only_integer => true, 
                             :allow_blank => true
 
-  validates_inclusion_of :term, :in => TERMS, :allow_blank  => true
   validates_inclusion_of :year, 
                          :in => -> {(Time.now.year-50)..(Time.now.year)}.call,
                          :allow_blank => true

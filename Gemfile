@@ -19,8 +19,12 @@ gem 'activerecord-postgresql-adapter'
 
 gem 'acts_as_commentable_with_threading'
 
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+
+
 if gem_available?('pg')
   gem 'pg'
+  gem 'rspec-rails'
 end
 
 group :darwin do

@@ -13,7 +13,7 @@
   %br
   %br
     = form_tag courses_path, :method => 'get', :id => "course_search" do
-      = text_field_tag :search, params[:search], :style=>"font-size: 18px; font-style: italic; width: 900px", :maxlength=>"20", :placeholder => "Find a Research Paper, Author, Conference or Journal"
+      = text_field_tag :search, params[:search], :style=>"font-size: 18px; font-style: italic; width: 900px; height: 45px;", :maxlength=>"20", :placeholder => "Find a Research Paper, Author, Conference or Journal"
       
     -if current_user
       .button_container

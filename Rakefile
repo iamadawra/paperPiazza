@@ -4,12 +4,14 @@
 
 require 'rake'
 
+require 'annotate/tasks'
+
+require 'rspec/core/rake_task'
+
 require File.expand_path('../config/application', __FILE__)
 
 Paperpiazza::Application.load_tasks
-#require 'annotate/tasks'
 
-#require 'rspec/core/rake_task'
 #
 #desc "Run non-JS specs"
 RSpec::Core::RakeTask.new("non_js_specs") do |t|

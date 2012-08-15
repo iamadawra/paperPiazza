@@ -25,6 +25,6 @@ Paperpiazza::Application.load_tasks
 #  t.pattern = "./spec/requests_js/*_spec.rb"
 #end
 #
-#task :default => :non_js_specs
+task :default => :non_js_specs
 
 

@@ -1,4 +1,4 @@
-require 'annotate'
+require 'annotate/tasks'
 
 require 'rspec/core/rake_task'
 

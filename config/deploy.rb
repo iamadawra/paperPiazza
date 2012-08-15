@@ -61,7 +61,7 @@ namespace :deploy do
   end
  task :symlink_db_config, :roles => :app do
     run <<-CMD
-      ln -nfs #{release_path}/config/database.yml.pg #{release_path}/config/database.yml
+      ln -nfs #{release_path}/config/database.yml
     CMD
   end 
 end

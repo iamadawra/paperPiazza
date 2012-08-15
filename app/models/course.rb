@@ -12,6 +12,7 @@
 #  rating      :integer
 #  conference  :string(255)
 #  tags        :text
+#  author_ids  :text
 #
 
 require 'has_roles'
@@ -19,9 +20,11 @@ require 'has_roles'
 class Course < ActiveRecord::Base
 
   has_many :comments, :dependent => :destroy
-  has_many :tags
+
+  attr_reader :tag_tokens, :author_tokens
+
   
-  attr_accessible :name, :tags, :shortname, :description, :year, :scopetest, :rating, :conference, :title, :teaser, :body, :version, :changelog
+  attr_accessible :name, :user_ids, :author_tokens, :author_ids, :tag_tokens, :shortname, :description, :year, :scopetest, :rating, :conference, :title, :teaser, :body, :version, :changelog
 
   ajaxful_rateable :stars => 10
 
@@ -60,8 +63,18 @@ class Course < ActiveRecord::Base
 
   has_many :lectures
 
+  has_and_belongs_to_many :tag_tokens
+
   has_many :assignments
   has_many :questions
+
+  def tag_tokens=(ids)
+    self.tag_ids = ids.split(",")
+  end
+
+  def author_tokens=(ids)
+    self.author_ids = ids.split(",")
+  end
 
 
   def has_member?(user)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120809040447) do
+ActiveRecord::Schema.define(:version => 20120809225055) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20120809040447) do
     t.integer  "rating"
     t.string   "conference"
     t.text     "tags"
+    t.text     "author_ids"
   end
 
   create_table "forums", :force => true do |t|

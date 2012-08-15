@@ -19,9 +19,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: paperpiazza_production
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
-  username: postgres
-  password: postgres
+  timeout: 5000

@@ -21,15 +21,9 @@
 //= require init
 //= require kalendae.js
 // Add your controller-specific JS below this line
+//= require jquery
+//= require jquery.tokeninput.js
+//= require tokeninput.js
 //= require ajax_calls.js
-//= require jquery.raty.js
-//= require jquery.idTabs.min.js
-//= require jquery.raty.min.js
-//= require jquery.ui.tabs.js
-//= require jquery.ui.widget.js
-//= require assignments
-//= require lectures
-//= require questions
-//
 // Add your controller-specific JS above this line
 //= require page_specific_execution

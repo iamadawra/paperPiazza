@@ -37,6 +37,8 @@ Paperpiazza::Application.routes.draw do
   # Want this at some point..
   resources :users
 
+  resources :tags
+
   resources :courses do
     post :rate, :on => :member
   end

@@ -12,6 +12,7 @@
 #  rating      :integer
 #  conference  :string(255)
 #  tags        :text
+#  author_ids  :text
 #
 
 require 'spec_helper'

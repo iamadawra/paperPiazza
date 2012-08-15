@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   has_many :comments, :dependent => :destroy
 
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :id
 
   ajaxful_rater
 

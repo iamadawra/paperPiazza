@@ -17,7 +17,7 @@
 //= require bootstrap-collapse
 //
 //= require jquery-ui-1.8.18.core_widget_mouse_draggable_droppable_sortable.min.js
-//
+//= require analytics.js
 //= require init
 //= require kalendae.js
 // Add your controller-specific JS below this line

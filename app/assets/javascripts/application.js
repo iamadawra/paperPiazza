@@ -13,17 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //
-//= require bootstrap-dropdown
-//= require bootstrap-collapse
 //
 //= require jquery-ui-1.8.18.core_widget_mouse_draggable_droppable_sortable.min.js
 //= require analytics.js
 //= require init
 //= require kalendae.js
 // Add your controller-specific JS below this line
-//= require jquery
 //= require jquery.tokeninput.js
 //= require tokeninput.js
+//= require jquery-ui-1.8.23.custom.min.js
+//= require jquery-1.8.0.min.js
 //= require ajax_calls.js
+//= require jquery
 // Add your controller-specific JS above this line
 //= require page_specific_execution

@@ -6,5 +6,7 @@
 
   =form_for @course do |f|
     = render partial: 'form', :object => f
-    .button_container
-      = f.submit "Confirm Submission", :class => 'btn btn-large btn-primary'
+    %br
+      %br
+        .button_container
+          = f.submit "Confirm Submission", :class => 'btn btn-large btn-primary'

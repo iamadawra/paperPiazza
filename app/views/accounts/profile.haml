@@ -114,9 +114,9 @@
             -if @user.id == current_user.id
               %a
                 My Reading List
-          -else
-            %a
-              #{@user.name}'s Reading List
+            -else
+              %a
+                #{@user.name}'s Reading List
       %li{:id=>"second_tab"}
         %span
           %a
